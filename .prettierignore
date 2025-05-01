@@ -1,0 +1,9 @@
+# 忽略 node_modules 依赖包
+node_modules/
+
+# 忽略版本控制相关
+.git/
+.gitignore
+
+# 忽略环境变量配置文件
+.env*
