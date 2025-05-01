@@ -10,5 +10,39 @@ declare namespace App {
       name: string
     }
 
+    type Schema = {
+      translation: {
+        common: {
+
+        },
+        form: {
+
+        },
+        page: {
+
+        },
+        request: {
+
+        },
+        route: {
+
+        },
+        theme: {
+
+        },
+        datatable: {
+
+        },
+        dropdown: {
+
+        },
+        icon: {
+
+        },
+        system: {
+
+        }
+      }
+    }
   }
 }
