@@ -66,15 +66,3 @@ export interface DeleteAccountResData {
     success: boolean;
     [property: string]: any;
 }
-
-export interface UserInfoResData {
-    userId: number;
-    username: string;
-    email: string;
-    bio: string;
-    avatar: string;
-    role: string;
-    createTime: Date;
-    updateTime: Date;
-    [property: string]: any;
-}

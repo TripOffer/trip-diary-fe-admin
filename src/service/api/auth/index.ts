@@ -36,7 +36,7 @@ class Auth extends BaseApi {
     }
 
     async changePassword(data: ChangePasswordReq) {
-        return this.http.post<ChangePasswordResData>(this.urls.changePassword, data);
+        return this.http.put<ChangePasswordResData>(this.urls.changePassword, data);
     }
 
     async deleteAccount(data: DeleteAccountReq) {
