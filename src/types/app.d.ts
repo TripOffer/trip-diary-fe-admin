@@ -8,7 +8,6 @@ declare namespace App {
       name: string
     }
 
-
     type FormMsg = {
       invalid: string
       required: string
