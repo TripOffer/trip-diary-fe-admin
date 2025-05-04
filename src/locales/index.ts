@@ -7,7 +7,7 @@ export const reactI18nextInstance = i18n.use(initReactI18next)
 
 export async function setupI18n() {
   await reactI18nextInstance.init({
-    lng: localStorage.get('lang') || 'zh-CN',
+    lng: localStorage.getItem('lang') || 'zh-CN',
     resources: locales,
     interpolation: {
       escapeValue: false,

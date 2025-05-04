@@ -7,6 +7,6 @@ export function setDayjsLocale(lang: App.I18n.LangType = 'zh-CN') {
     'zh-CN': 'zh-cn',
     'en-US': 'en',
   } satisfies Record<App.I18n.LangType, string>
-  const l = lang || localStorage.get('lang') || 'zh-CN'
+  const l = lang || localStorage.getItem('lang') || 'zh-CN'
   locale(localMap[l])
 }
