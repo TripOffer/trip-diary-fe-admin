@@ -199,6 +199,8 @@ declare namespace App {
             };
             resetPwd: {
               title: string;
+              success: string;
+              confirm: string;
             };
           };
           manage: {

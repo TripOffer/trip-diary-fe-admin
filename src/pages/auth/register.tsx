@@ -12,7 +12,7 @@ const Register: FC = () => {
     const [loading, setLoading] = useState(false)
     const [sendingCode, setSendingCode] = useState(false)
     const [form] = Form.useForm()
-    const [countdown, setCountdown] = useState(60)
+    const [countdown, setCountdown] = useState(0)
 
     const startCountdown = () => {
         setCountdown(60)
@@ -44,7 +44,7 @@ const Register: FC = () => {
             setSendingCode(true)
             const response = await Api.authApi.sendCode({email})
             if(response && response.data) {
-                message.success($t('page.login.sendCodeSuccess'))
+                message.success($t('page.login.codeLogin.sendCodeSuccess'))
                 startCountdown()
             }
         } catch (error) {
@@ -60,7 +60,7 @@ const Register: FC = () => {
             setLoading(true)
             const response = await Api.authApi.register(values)
             if(response && response.data) {
-                message.success($t('page.register.success'))
+                message.success($t('page.login.register.success'))
                 navigate('/auth/login')
             }
         } catch (error) {
@@ -74,7 +74,7 @@ const Register: FC = () => {
     return (
         <div className={styles.loginContainer}>
             <div className={styles.loginForm}>
-                <h1 className={styles.title}>{$t('page.register.title')}</h1>
+                <h1 className={styles.title}>{$t('page.login.register.title')}</h1>
                 <Form
                     form={form}
                     name="register"
@@ -179,7 +179,7 @@ const Register: FC = () => {
                                 onClick={handleSendCode}
                                 style={{marginLeft: 8, width: 120}}
                             >
-                                {countdown > 0 ? `${countdown}s` : $t('page.codeLogin.getCode')}
+                                {countdown > 0 ? `${countdown}s` : $t('page.login.codeLogin.getCode')}
                             </Button>
                         </div>
                     </Form.Item>
@@ -192,12 +192,12 @@ const Register: FC = () => {
                             loading={loading}
                             block
                         >
-                            {$t('page.common.Register')}
+                            {$t('page.login.common.Register')}
                         </Button>
                     </Form.Item>
 
                     <div className={styles.registerLink}>
-                        {$t('')} <a onClick={() => navigate('/auth/login')}>{$t('page.pwdLogin.title')}</a>
+                        {$t('')} <a onClick={() => navigate('/auth/login')}>{$t('page.login.pwdLogin.title')}</a>
                     </div>
                 </Form>
             </div>

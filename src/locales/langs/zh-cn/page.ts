@@ -125,6 +125,8 @@ const page: App.I18n.Schema['translation']['page'] = {
     },
     resetPwd: {
       title: '重置密码',
+      confirm: '确认修改',
+      success: '重置密码成功',
     },
   },
   manage: {

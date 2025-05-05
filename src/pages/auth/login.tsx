@@ -36,7 +36,7 @@ const LoginPage = () => {
                     ...user,
                 })
 
-                message.success($t('page.common.loginSuccess'))
+                message.success($t('page.login.common.loginSuccess'))
                 navigate('/')
             }
         } catch (error) {
@@ -50,7 +50,7 @@ const LoginPage = () => {
     return (
         <div className={styles.loginContainer}>
             <div className={styles.loginForm}>
-                <h1 className={styles.title}>{$t('page.common.welcomeBack')}</h1>
+                <h1 className={styles.title}>{$t('page.login.common.welcomeBack')}</h1>
                 <Form
                     form={form}
                     name="login"
@@ -110,12 +110,12 @@ const LoginPage = () => {
                             loading={loading}
                             size="large"
                         >
-                            {$t('page.common.login')}
+                            {$t('page.login.common.login')}
                         </Button>
                     </Form.Item>
 
                     <div className={styles.registerLink}>
-                        {$t('page.pwdLogin.register')} <a onClick{() => navigate('/auth/register')}>{$t('page.common.Register')}</a>
+                        {$t('page.login.pwdLogin.register')} <a onClick{() => navigate('/auth/register')}>{$t('page.login.common.Register')}</a>
                     </div>
                 </Form>
             </div>

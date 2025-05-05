@@ -125,6 +125,8 @@ const page: App.I18n.Schema['translation']['page'] = {
     },
     resetPwd: {
       title: 'Reset Password',
+      success: 'Password reset successfully',
+      confirm: 'Confirm Modification',
     },
   },
   manage: {
