@@ -1,4 +1,5 @@
 const common: App.I18n.Schema['translation']['common'] = {
+  title: '旅行日记管理系统',
   action: '操作',
   add: '新增',
   addSuccess: '添加成功',
@@ -20,6 +21,7 @@ const common: App.I18n.Schema['translation']['common'] = {
   index: '序号',
   keywordSearch: '请输入关键词搜索',
   logout: '退出登录',
+  logoutSuccess: '退出登录成功',
   logoutConfirm: '确认退出登录吗？',
   lookForward: '敬请期待',
   modify: '修改',

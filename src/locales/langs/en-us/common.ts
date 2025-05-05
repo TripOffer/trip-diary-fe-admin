@@ -1,4 +1,5 @@
 const common: App.I18n.Schema['translation']['common'] = {
+  title: 'Travel Diary Management System',
   action: 'Action',
   add: 'Add',
   addSuccess: 'Add Success',
@@ -20,6 +21,7 @@ const common: App.I18n.Schema['translation']['common'] = {
   index: 'Index',
   keywordSearch: 'Please enter keyword',
   logout: 'Logout',
+  logoutSuccess: 'Logout Success',
   logoutConfirm: 'Are you sure you want to log out?',
   lookForward: 'Coming soon',
   modify: 'Modify',

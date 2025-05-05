@@ -16,6 +16,7 @@ declare namespace App {
     type Schema = {
       translation: {
         common: {
+          title: string;
           action: string;
           add: string;
           addSuccess: string;
@@ -37,6 +38,7 @@ declare namespace App {
           index: string;
           keywordSearch: string;
           logout: string;
+          logoutSuccess: string;
           logoutConfirm: string;
           lookForward: string;
           modify: string;

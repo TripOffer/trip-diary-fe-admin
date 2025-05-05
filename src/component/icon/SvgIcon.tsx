@@ -19,7 +19,7 @@ const symbolId = (localIcon: string = defaultLocalIcon) => {
     return `#${prefix}-${iconName}`
 }
 
-const SvgIcon = ({icon, localIcon, stylem, className, style}: Props) => {
+const SvgIcon = ({icon, localIcon, className, style}: Props) => {
     const iconName = icon || localIcon || defaultLocalIcon;
     return localIcon || !icon ? (
         <svg
