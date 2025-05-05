@@ -7,6 +7,8 @@ import { App as AntdApp, ConfigProvider} from "antd";
 import zhCN from "antd/es/locale/zh_CN";
 import {setupI18n} from "@/locales";
 import FallbackRender from "@/component/ErrorBoundary.tsx";
+import {RouterProvider} from "react-router-dom";
+import router from "@/router.tsx";
 
 function setupApp() {
     setupI18n()
@@ -19,7 +21,7 @@ function setupApp() {
             <ErrorBoundary FallbackComponent={FallbackRender}>
                 <ConfigProvider locale={zhCN}>
                     <StrictMode>
-                        <App />
+                        <RouterProvider router={router} />
                     </StrictMode>
                 </ConfigProvider>
             </ErrorBoundary>

@@ -3,6 +3,8 @@ import App from "@/App.tsx";
 import ChangePasswordPage from "@/pages/auth/changePassword.tsx";
 import LoginPage from "@/pages/auth/login.tsx";
 import RegisterPage from "@/pages/auth/register.tsx";
+import NotFoundPage from "@/pages/404.tsx";
+
 
 const routes: RouteObject[] = [
     {
@@ -22,6 +24,10 @@ const routes: RouteObject[] = [
         path: "/auth/changePassword",
         element: <ChangePasswordPage />,
     } as RouteObject,
+    {
+        path: '*',
+        element: <NotFoundPage />
+    } as RouteObject
 ];
 
 const router = createHashRouter(routes);

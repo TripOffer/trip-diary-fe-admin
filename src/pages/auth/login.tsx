@@ -5,7 +5,7 @@ import {Button, Form, Input, message} from "antd";
 import {useNavigate} from "react-router-dom";
 import useAuthStore from "@/store/auth.ts";
 import {useTokenStore} from "@/store/token.ts";
-import styles from "./Login.module.css";
+import styles from "@/pages/auth/login.module.scss"
 import {FC, useState} from "react";
 import {$t} from "@/locales";
 
@@ -115,7 +115,7 @@ const LoginPage = () => {
                     </Form.Item>
 
                     <div className={styles.registerLink}>
-                        {$t('page.login.pwdLogin.register')} <a onClick{() => navigate('/auth/register')}>{$t('page.login.common.Register')}</a>
+                        {$t('page.login.pwdLogin.register')} <a onClick={() => navigate('/auth/register')}>{$t('page.login.common.Register')}</a>
                     </div>
                 </Form>
             </div>

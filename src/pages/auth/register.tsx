@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import Api from "@/service/api";
 import {RegisterReq} from "@/service/api/auth/types.ts";
 import {Icon} from "@iconify/react";
-import styles from './login.module.scss'
+import styles from "@/pages/auth/login.module.scss"
 import {$t} from "@/locales";
 
 const Register: FC = () => {

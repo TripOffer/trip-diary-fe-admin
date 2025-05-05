@@ -61,6 +61,9 @@ declare namespace App {
             no: string;
             yes: string;
           };
+          back: string;
+          title404: string;
+          hint404: string;
         }
         form: {
           code: FormMsg;

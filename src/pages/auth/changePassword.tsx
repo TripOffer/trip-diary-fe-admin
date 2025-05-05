@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react'
 import {useNavigate} from'react-router-dom'
 import {Button, Form, Input, message} from'antd'
-import styles from'./changePassword.module.scss'
+import styles from "@/pages/auth/login.module.scss"
 import {$t} from'@/locales'
 import Api from'@/service/api'
 import {ChangePasswordReq} from'@/service/api/auth/types'

@@ -44,6 +44,9 @@ const common: App.I18n.Schema['translation']['common'] = {
     no: 'No',
     yes: 'Yes',
   },
+  back: 'Back to previous page',
+  title404: 'Oops, page not found',
+  hint404: 'Sorry, the page you visited does not exist.',
 }
 
 export default common
