@@ -168,7 +168,8 @@ declare namespace App {
               codePlaceholder: string;
               confirm: string;
               confirmPasswordPlaceholder: string;
-              loginOrRegister: string;
+              login: string;
+              Register: string;
               loginSuccess: string;
               passwordPlaceholder: string;
               phonePlaceholder: string;

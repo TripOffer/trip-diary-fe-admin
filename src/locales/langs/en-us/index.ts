@@ -1,6 +1,6 @@
 import common from './common'
 import form from './form'
-import page from './pages'
+import page from './page.ts'
 import request from './request'
 import route from './route'
 import theme from './theme'
