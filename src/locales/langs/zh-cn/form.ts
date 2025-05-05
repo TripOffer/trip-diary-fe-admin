@@ -19,6 +19,7 @@ const form: App.I18n.Schema['translation']['form'] = {
     invalid: '密码格式不正确，6-18位字符，包含字母、数字、下划线',
     required: '请输入密码',
   },
+  send: '验证码发送失败',
   required: '不能为空',
   userName: {
     invalid: '用户名格式不正确',

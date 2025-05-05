@@ -114,12 +114,14 @@ const page: App.I18n.Schema['translation']['page'] = {
       superAdmin: '超级管理员',
       title: '密码登录',
       user: '普通用户',
+      login: "已有账号？"
     },
     register: {
       agreement: '我已经仔细阅读并接受',
       policy: '《隐私权政策》',
       protocol: '《用户协议》',
       title: '注册账号',
+      success: '注册成功',
     },
     resetPwd: {
       title: '重置密码',

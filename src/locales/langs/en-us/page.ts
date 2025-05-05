@@ -114,12 +114,14 @@ const page: App.I18n.Schema['translation']['page'] = {
       superAdmin: 'Super Admin',
       title: 'Password Login',
       user: 'User',
+      login: 'Already have an account?',
     },
     register: {
       agreement: 'I have read and agree to',
       policy: '《Privacy Policy》',
       protocol: '《User Agreement》',
       title: 'Register',
+      success: 'Successfully registered!'
     },
     resetPwd: {
       title: 'Reset Password',

@@ -19,6 +19,7 @@ const form: App.I18n.Schema['translation']['form'] = {
     invalid: '6-18 characters, including letters, numbers, and underscores',
     required: 'Please enter password',
   },
+  send: 'Failed to send verification code',
   required: 'Cannot be empty',
   userName: {
     invalid: 'User name format is incorrect',

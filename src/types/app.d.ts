@@ -69,6 +69,7 @@ declare namespace App {
           phone: FormMsg;
           pwd: FormMsg;
           required: string;
+          send: string;
           userName: FormMsg;
         }
         page: {
@@ -187,12 +188,14 @@ declare namespace App {
               superAdmin: string;
               title: string;
               user: string;
+              login:string;
             };
             register: {
               agreement: string;
               policy: string;
               protocol: string;
               title: string;
+              success: string;
             };
             resetPwd: {
               title: string;
