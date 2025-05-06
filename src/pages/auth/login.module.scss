@@ -1,4 +1,4 @@
-.logContainer {
+.loginContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,8 +6,9 @@
   background-color: #f5f5f5;
 }
 
-.logForm {
+.loginForm {
   width: 100%;
+  position: relative;
   max-width: 400px;
   padding: 30px;
   background-color: #fff;

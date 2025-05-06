@@ -4,6 +4,7 @@ import useAuthStore from '@/store/auth.ts'
 import NavIcon from '@/component/icon/NavIcon.tsx'
 import { $t } from '@/locales'
 import logo from '@/assets/react.svg'
+import LangSwitch from "@/features/lang/LangSwitch.tsx";
 
 const NavBar = () => {
   const navigate = useNavigate()
@@ -38,7 +39,9 @@ const NavBar = () => {
         <img src={logo} alt="logo" className="h-8 mr-2" />
         <p className="text-2xl font-bold text-black">{$t('common.title')}</p>
       </div>
-      <div className="flex flex-row gap-3 mr-20">
+
+      <div className="flex flex-row gap-8 mr-20">
+        <LangSwitch className="hover:text-blue-500 transition-colors" />
         <Popover content={userContent} placement="bottom" trigger="hover" arrow={false}>
           <div>
             <NavIcon

@@ -10,11 +10,11 @@ export const LangContext = createContext<LangContextType>({
   locale: (localStorage.getItem('lang') || 'zh-CN') as App.I18n.LangType,
   localeOptions: [
     {
-      name: '中文',
+      label: '中文',
       key: 'zh-CN',
     },
     {
-      name: 'English',
+      label: 'English',
       key: 'en-US',
     },
   ] as App.I18n.LangOption[],

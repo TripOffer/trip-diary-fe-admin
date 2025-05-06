@@ -5,9 +5,10 @@ import { Button, Form, Input, message } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import useAuthStore from '@/store/auth.ts'
 import { useTokenStore } from '@/store/token.ts'
-import styles from '@/pages/auth/login.module.scss'
+import styles from './login.module.scss'
 import { FC, useState } from 'react'
 import { $t } from '@/locales'
+import LangSwitch from "@/features/lang/LangSwitch.tsx";
 
 const LoginPage = () => {
   const navigate = useNavigate()

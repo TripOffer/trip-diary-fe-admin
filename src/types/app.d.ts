@@ -5,7 +5,7 @@ declare namespace App {
 
     type LangOption = {
       key: LangType
-      name: string
+      label: string
     }
 
     type FormMsg = {

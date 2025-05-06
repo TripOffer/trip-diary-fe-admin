@@ -5,11 +5,11 @@ import { useState } from 'react'
 
 const localeOptions = [
   {
-    name: '中文',
+    label: '中文',
     key: 'zh-CN',
   },
   {
-    name: 'English',
+    label: 'English',
     key: 'en-US',
   },
 ] satisfies App.I18n.LangOption[]

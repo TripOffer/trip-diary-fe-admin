@@ -164,7 +164,7 @@ const Register: FC = () => {
           >
             <div style={{ display: 'flex' }}>
               <Input
-                prefix={<Icon icon="mdi:email-outline" />}
+                prefix={<Icon icon="mdi:shield-check-outline" />}
                 placeholder={$t('form.code.required')}
                 size="large"
                 style={{ flex: 1 }}
