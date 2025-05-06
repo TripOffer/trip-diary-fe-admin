@@ -121,7 +121,7 @@ const page: App.I18n.Schema['translation']['page'] = {
       policy: '《Privacy Policy》',
       protocol: '《User Agreement》',
       title: 'Register',
-      success: 'Successfully registered!'
+      success: 'Successfully registered!',
     },
     resetPwd: {
       title: 'Reset Password',

@@ -1,2 +1,2 @@
-import {domMax} from "motion/react";
+import { domMax } from 'motion/react'
 export default domMax

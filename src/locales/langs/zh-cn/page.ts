@@ -114,7 +114,7 @@ const page: App.I18n.Schema['translation']['page'] = {
       superAdmin: '超级管理员',
       title: '密码登录',
       user: '普通用户',
-      login: "已有账号？"
+      login: '已有账号？',
     },
     register: {
       agreement: '我已经仔细阅读并接受',

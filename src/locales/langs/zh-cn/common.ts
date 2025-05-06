@@ -46,7 +46,7 @@ const common: App.I18n.Schema['translation']['common'] = {
   },
   back: '返回上一页',
   title404: '哎呀，页面不存在！',
-  hint404: '您访问的页面似乎已经迷路了。可能是链接已过期，页面已被移动，或者您输入了错误的地址。'
+  hint404: '您访问的页面似乎已经迷路了。可能是链接已过期，页面已被移动，或者您输入了错误的地址。',
 }
 
 export default common
