@@ -12,8 +12,9 @@ function App() {
       <AntdProvider>
         <AntdContextHolder>
           <LazyAnimate>
-            <NavBar />
-            <Outlet />
+            <NavBar>
+              <Outlet />
+            </NavBar>
           </LazyAnimate>
         </AntdContextHolder>
       </AntdProvider>

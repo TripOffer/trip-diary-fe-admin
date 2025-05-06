@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Dropdown } from 'antd'
-import NavIcon from "@/component/icon/NavIcon.tsx";
+import NavIcon from '@/component/icon/NavIcon.tsx'
 
 interface Props {
   className?: string

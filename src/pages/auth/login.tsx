@@ -8,7 +8,7 @@ import { useTokenStore } from '@/store/token.ts'
 import styles from './login.module.scss'
 import { FC, useState } from 'react'
 import { $t } from '@/locales'
-import LangSwitch from "@/features/lang/LangSwitch.tsx";
+import LangSwitch from '@/features/lang/LangSwitch.tsx'
 
 const LoginPage = () => {
   const navigate = useNavigate()
