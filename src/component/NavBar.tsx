@@ -46,7 +46,7 @@ const NavBar = ({ children }: PropsWithChildren) => {
   )
 
   return (
-    <Layout className="w-full h-screen">
+    <Layout className="w-full flex min-h-screen">
       <Sider
         trigger={null}
         collapsible
@@ -83,9 +83,9 @@ const NavBar = ({ children }: PropsWithChildren) => {
           ]}
         />
       </Sider>
-      <Layout>
+      <Layout className="flex-1 flex flex-col">
         <Header
-          className="w-full py-2 flex flex-row justify-between shadow"
+          className="min-w-full flex flex-row justify-between shadow"
           style={{
             backgroundColor: '#F5F7FA', // 你想要的浅色背景
           }}

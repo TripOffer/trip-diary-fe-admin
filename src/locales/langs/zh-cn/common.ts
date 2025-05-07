@@ -26,7 +26,7 @@ const common: App.I18n.Schema['translation']['common'] = {
   lookForward: '敬请期待',
   modify: '修改',
   modifySuccess: '修改成功',
-  noData: '无数据',
+  noData: '秘密',
   operate: '操作',
   pleaseCheckValue: '请检查输入的值是否合法',
   refresh: '刷新',
@@ -39,6 +39,7 @@ const common: App.I18n.Schema['translation']['common'] = {
   update: '更新',
   updateSuccess: '更新成功',
   userCenter: '个人中心',
+  userInfo: '用户信息',
   warning: '警告',
   yesOrNo: {
     no: '否',
@@ -47,6 +48,8 @@ const common: App.I18n.Schema['translation']['common'] = {
   back: '返回上一页',
   title404: '哎呀，页面不存在！',
   hint404: '您访问的页面似乎已经迷路了。可能是链接已过期，页面已被移动，或者您输入了错误的地址。',
+  warningDelete: '警告：删除账号是不可逆操作，所有数据将被永久删除！请谨慎操作。',
+  deleteHint: '请输入您的密码以确认删除账号：',
 }
 
 export default common

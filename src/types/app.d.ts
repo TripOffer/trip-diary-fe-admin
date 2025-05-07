@@ -56,6 +56,7 @@ declare namespace App {
           update: string
           updateSuccess: string
           userCenter: string
+          userInfo: string
           warning: string
           yesOrNo: {
             no: string
@@ -64,6 +65,8 @@ declare namespace App {
           back: string
           title404: string
           hint404: string
+          deleteHint: string
+          warningDelete: string
         }
         form: {
           code: FormMsg
@@ -315,10 +318,13 @@ declare namespace App {
                 userPhone: string
                 userRole: string
                 userStatus: string
+                bio: string
+                birth: string
               }
               gender: {
                 female: string
                 male: string
+                other: string
               }
               nickName: string
               title: string
@@ -328,6 +334,8 @@ declare namespace App {
               userPhone: string
               userRole: string
               userStatus: string
+              birthday: string
+              bio: string
             }
             userDetail: {
               content: string

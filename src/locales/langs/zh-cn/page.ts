@@ -239,19 +239,24 @@ const page: App.I18n.Schema['translation']['page'] = {
         userPhone: '请输入手机号',
         userRole: '请选择用户角色',
         userStatus: '请选择用户状态',
+        birth: '请选择生日',
+        bio: '介绍一下自己吧',
       },
       gender: {
         female: '女',
         male: '男',
+        other: '秘密',
       },
       nickName: '昵称',
       title: '用户列表',
       userEmail: '邮箱',
-      userGender: '性别',
+      userGender: '性别：',
       userName: '用户名',
       userPhone: '手机号',
       userRole: '用户角色',
       userStatus: '用户状态',
+      birthday: '生日：',
+      bio: '个人简介：',
     },
     userDetail: {
       content: `loader 会让网络请求跟懒加载的文件几乎一起发出请求 然后 一边解析懒加载的文件 一边去等待 网络请求
@@ -259,8 +264,7 @@ const page: App.I18n.Schema['translation']['page'] = {
         切换不同的页面 这是react 框架和react-router数据路由器的优势 而不用非得等到 页面的显现 而不是常规的
         请求懒加载的文件 - 解析 - 请求懒加载的文件 - 挂载之后去发出网络请求 - 然后渲染页面 - 渲染完成
         还要自己加loading效果`,
-      explain:
-        '这个页面仅仅是为了展示 react-router-dom 的 loader 的强大能力，数据是随机的对不上很正常',
+      explain: '这个人很懒，还没有填写个人简介',
     },
   },
 }

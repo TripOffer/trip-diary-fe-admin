@@ -26,7 +26,7 @@ const common: App.I18n.Schema['translation']['common'] = {
   lookForward: 'Coming soon',
   modify: 'Modify',
   modifySuccess: 'Modify Success',
-  noData: 'No Data',
+  noData: 'secret',
   operate: 'Operate',
   pleaseCheckValue: 'Please check whether the value is valid',
   refresh: 'Refresh',
@@ -39,6 +39,7 @@ const common: App.I18n.Schema['translation']['common'] = {
   update: 'Update',
   updateSuccess: 'Update Success',
   userCenter: 'User Center',
+  userInfo: 'User Info',
   warning: 'Warning',
   yesOrNo: {
     no: 'No',
@@ -47,6 +48,9 @@ const common: App.I18n.Schema['translation']['common'] = {
   back: 'Back to previous page',
   title404: 'Oops, page not found',
   hint404: 'Sorry, the page you visited does not exist.',
+  warningDelete:
+    'Warning: Deleting an account is a permanent action and all data will be deleted! Please proceed with caution.',
+  deleteHint: 'Please enter your password to confirm deleting the account:',
 }
 
 export default common

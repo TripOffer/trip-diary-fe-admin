@@ -5,6 +5,8 @@ export interface UserInfoData {
   bio: string
   avatar: string
   role: string
+  gender: string
+  birthday: Date
   createTime: Date
   updateTime: Date
   [property: string]: any

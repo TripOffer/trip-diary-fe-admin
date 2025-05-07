@@ -8,6 +8,8 @@ interface AuthState {
   bio: string
   avatar: string
   role: string
+  gender: string
+  birthday: Date
   createdAt: Date
   updatedAt: Date
   setAuth: (auth: Partial<AuthState>) => void
@@ -25,6 +27,8 @@ const useAuthStore = create<AuthState>((set, get) => ({
   bio: '',
   avatar: '',
   role: '',
+  gender: '',
+  birthday: new Date(),
   createdAt: new Date(),
   updatedAt: new Date(),
   setAuth: auth => set(state => ({ ...state, ...auth })),

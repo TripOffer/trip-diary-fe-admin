@@ -5,6 +5,7 @@ import LoginPage from '@/pages/auth/login.tsx'
 import RegisterPage from '@/pages/auth/register.tsx'
 import NotFoundPage from '@/pages/404.tsx'
 import ProtectedRoute from '@/component/ProtectedRoute.tsx'
+import UserPage from '@/pages/user/index.tsx'
 
 const routes: RouteObject[] = [
   {
@@ -14,7 +15,12 @@ const routes: RouteObject[] = [
         <App />
       </ProtectedRoute>
     ),
-    children: [],
+    children: [
+      {
+        path: '/user',
+        element: <UserPage />,
+      },
+    ],
   } as RouteObject,
   {
     path: '/auth/login',
