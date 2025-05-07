@@ -32,7 +32,7 @@ const NavBar = ({ children }: PropsWithChildren) => {
         localStorage.removeItem('user_token')
         resetAuth()
         message.success($t('common.logoutSuccess'))
-        navigate('/auth/login')
+        navigate('/auth/login', { replace: true })
       },
     })
   }

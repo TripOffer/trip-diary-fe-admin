@@ -12,7 +12,7 @@ import LangSwitch from '@/features/lang/LangSwitch.tsx'
 
 const LoginPage = () => {
   const navigate = useNavigate()
-  const { loading, setLoading } = useState(false)
+  const [loading, setLoading] = useState(false)
   const { setEmail, setToken, setUser, ...tokenData } = useTokenStore()
   const { form } = Form.useForm()
   const { setAuth } = useAuthStore()
