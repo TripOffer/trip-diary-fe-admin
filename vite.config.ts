@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig(configEnv => {
+  // @ts-ignore
   const viteEnv = loadEnv(configEnv.mode, process.cwd()) as unknown as ImportMetaEnv
   console.log(viteEnv)
   return {
@@ -12,6 +13,13 @@ export default defineConfig(configEnv => {
     base: viteEnv.VITE_APP_BASE_URL,
     server: {
       port: viteEnv.VITE_APP_PORT,
+      proxy: {
+        '/api': {
+          target: viteEnv.VITE_SERVICE_PROXY_URL,
+          changeOrigin: true,
+          secure: false,
+        },
+      },
     },
     resolve: {
       alias: {
