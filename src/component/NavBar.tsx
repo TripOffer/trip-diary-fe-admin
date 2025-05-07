@@ -7,6 +7,7 @@ import logo from '@/assets/react.svg'
 import LangSwitch from '@/features/lang/LangSwitch.tsx'
 import { PropsWithChildren, useState } from 'react'
 import Sider from 'antd/es/layout/Sider'
+import { Icon } from '@iconify/react'
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -53,18 +54,11 @@ const NavBar = ({ children }: PropsWithChildren) => {
         style={{
           backgroundColor: '#f9f9f9', // 你想要的浅色背景
         }}
+        width={collapsed ? 64 : 300}
       >
-        <div onClick={() => setCollapsed(!collapsed)} style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 20,
-            width: 64,
-            height: 64,
-            cursor: 'pointer',
-        }}>
-            {(collapsed? <MenuUnfoldOutlined /> as React.ReactNode :
-          <MenuFoldOutlined  /> as React.ReactNode)}
+        <div className="flex justify-center items-center h-16">
+          <img src={logo} alt="logo" className="h-10" />
+          {collapsed || <p className="ml-2 text-2xl font-bold text-black">{$t('common.title')}</p>}
         </div>
         <Menu
           theme="light"
@@ -73,32 +67,43 @@ const NavBar = ({ children }: PropsWithChildren) => {
           items={[
             {
               key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
+              icon: <Icon icon="mdi-light:home" width="24" height="24" />,
+              label: $t('page.manage.menu.home'),
             },
             {
               key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
+              icon: <Icon icon="material-symbols-light:menu" width="24" height="24" />,
+              label: $t('route.(base)_multi-menu'),
             },
             {
               key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
+              icon: <Icon icon="clarity:help-info-line" width="24" height="24" />,
+              label: $t('page.about.title'),
             },
           ]}
         />
       </Sider>
       <Layout>
         <Header
-          className="w-full px-10 py-2 flex flex-row justify-between shadow"
+          className="w-full py-2 flex flex-row justify-between shadow"
           style={{
             backgroundColor: '#F5F7FA', // 你想要的浅色背景
           }}
         >
-          <div className="flex items-center">
-            <img src={logo} alt="logo" className="h-8 mr-2" />
-            <p className="text-2xl font-bold text-black">{$t('common.title')}</p>
+          <div
+            onClick={() => setCollapsed(!collapsed)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              fontSize: 20,
+              width: 64,
+              height: 64,
+              cursor: 'pointer',
+            }}
+          >
+            {collapsed
+              ? ((<MenuUnfoldOutlined />) as React.ReactNode)
+              : ((<MenuFoldOutlined />) as React.ReactNode)}
           </div>
 
           <div className="flex flex-row gap-8 mr-20 pt-2">
@@ -129,7 +134,6 @@ const NavBar = ({ children }: PropsWithChildren) => {
             borderRadius: 5,
           }}
         >
-          Content
           {children as React.ReactNode}
         </Content>
       </Layout>

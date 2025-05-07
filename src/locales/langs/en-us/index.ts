@@ -3,7 +3,6 @@ import form from './form'
 import page from './page.ts'
 import request from './request'
 import route from './route'
-import theme from './theme'
 
 const local: App.I18n.Schema['translation'] = {
   common,
@@ -11,16 +10,8 @@ const local: App.I18n.Schema['translation'] = {
   page,
   request,
   route,
-  theme,
   datatable: {
     itemCount: 'Total {total} items',
-  },
-  dropdown: {
-    closeAll: 'Close All',
-    closeCurrent: 'Close Current',
-    closeLeft: 'Close Left',
-    closeOther: 'Close Other',
-    closeRight: 'Close Right',
   },
   icon: {
     collapse: 'Collapse Menu',

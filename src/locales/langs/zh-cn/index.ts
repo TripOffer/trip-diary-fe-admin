@@ -2,19 +2,11 @@ import common from './common'
 import form from './form'
 import page from './page.ts'
 import route from './route'
-import theme from './theme'
 
 const local: App.I18n.Schema['translation'] = {
   common,
   datatable: {
     itemCount: '共 {{total}} 条',
-  },
-  dropdown: {
-    closeAll: '关闭所有',
-    closeCurrent: '关闭',
-    closeLeft: '关闭左侧',
-    closeOther: '关闭其它',
-    closeRight: '关闭右侧',
   },
   form,
   icon: {
@@ -48,7 +40,6 @@ const local: App.I18n.Schema['translation'] = {
     updateContent: '检测到系统有新版本发布，是否立即刷新页面？',
     updateTitle: '系统版本更新通知',
   },
-  theme,
 }
 
 export default local

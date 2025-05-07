@@ -1,5 +1,5 @@
 const common: App.I18n.Schema['translation']['common'] = {
-  title: 'Travel Diary Management System',
+  title: 'Management System',
   action: 'Action',
   add: 'Add',
   addSuccess: 'Add Success',
