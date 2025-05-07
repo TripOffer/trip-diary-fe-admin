@@ -4,12 +4,25 @@ import ChangePasswordPage from '@/pages/auth/changePassword.tsx'
 import LoginPage from '@/pages/auth/login.tsx'
 import RegisterPage from '@/pages/auth/register.tsx'
 import NotFoundPage from '@/pages/404.tsx'
+import { useTokenStore } from '@/store/token.ts'
+import { Navigate, Outlet } from 'react-router'
+
+const ProtectedRoute = () => {
+  const token = useTokenStore.getState().token
+  if (!token) {
+    return <Navigate to="/auth/login" replace={true} />
+  } else return <Outlet />
+}
 
 const routes: RouteObject[] = [
   {
-    path: '/',
-    element: <App />,
-    children: [], // 可以填子路由
+    element: <ProtectedRoute />, // 所有需要 token 的页面放这里
+    children: [
+      {
+        path: '/',
+        element: <App />,
+      },
+    ],
   } as RouteObject,
   {
     path: '/auth/login',
