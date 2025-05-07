@@ -14,12 +14,12 @@ import {
 
 class Auth extends BaseApi {
   urls = {
-    login: '/user/login',
-    register: '/user/register',
-    sendCode: '/user/send_code',
-    changePassword: '/user/change_password',
-    deleteAccount: '/user',
-    getUserInfo: '/user/info',
+    login: '/auth/login',
+    register: '/auth/register',
+    sendCode: '/auth/send-code',
+    changePassword: '/auth/password',
+    deleteAccount: '/auth',
+    getUserInfo: '/auth/info',
   }
   tag = 'Auth'
 

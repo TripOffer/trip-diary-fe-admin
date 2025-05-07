@@ -83,7 +83,7 @@ const page: App.I18n.Schema['translation']['page'] = {
       title: 'Bind WeChat',
     },
     codeLogin: {
-      getCode: 'Get verification code',
+      getCode: 'Get code',
       imageCodePlaceholder: 'Please enter image verification code',
       reGetCode: 'Reacquire after {{time}}s',
       sendCodeSuccess: 'Verification code sent successfully',
