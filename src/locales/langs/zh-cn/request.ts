@@ -1,4 +1,5 @@
 const request: App.I18n.Schema['translation']['request'] = {
+  noPermission: '没有权限访问',
   logout: '请求失败',
   logoutMsg: '用户状态无效，请重新登录',
   logoutWithModal: '请求失败后弹出模式，然后注销用户',

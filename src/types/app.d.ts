@@ -202,6 +202,7 @@ declare namespace App {
               protocol: string
               title: string
               success: string
+              repeatError: string
             }
             resetPwd: {
               title: string
@@ -344,6 +345,7 @@ declare namespace App {
           }
         }
         request: {
+          noPermission: string
           logout: string
           logoutMsg: string
           logoutWithModal: string

@@ -2,6 +2,7 @@ import common from './common'
 import form from './form'
 import page from './page.ts'
 import route from './route'
+import request from './request'
 
 const local: App.I18n.Schema['translation'] = {
   common,
@@ -22,14 +23,7 @@ const local: App.I18n.Schema['translation'] = {
     unpin: '取消固定',
   },
   page,
-  request: {
-    logout: '请求失败后登出用户',
-    logoutMsg: '用户状态失效，请重新登录',
-    logoutWithModal: '请求失败后弹出模态框再登出用户',
-    logoutWithModalMsg: '用户状态失效，请重新登录',
-    refreshToken: '请求的token已过期，刷新token',
-    tokenExpired: 'token已过期',
-  },
+  request: request,
   route,
   system: {
     errorReason: '错误原因',

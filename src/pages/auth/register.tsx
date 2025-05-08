@@ -6,11 +6,15 @@ import { RegisterReq } from '@/service/api/auth/types.ts'
 import { Icon } from '@iconify/react'
 import styles from '@/pages/auth/login.module.scss'
 import { $t } from '@/locales'
+import { useTokenStore } from '@/store/token.ts'
+import useAuthStore from '@/store/auth.ts'
 
 const Register: FC = () => {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [sendingCode, setSendingCode] = useState(false)
+  const { setEmail, setToken, setUser, setRole, ...tokenData } = useTokenStore()
+  const { setAuth } = useAuthStore()
   const [form] = Form.useForm()
   const [countdown, setCountdown] = useState(0)
 
@@ -60,12 +64,25 @@ const Register: FC = () => {
       setLoading(true)
       const response = await Api.authApi.register(values)
       if (response && response.data) {
-        message.success($t('page.login.register.success'))
-        navigate('/auth/login')
+        const { token, user } = response.data
+        const role = user.role
+        if (role && role !== 'User') {
+          setToken(token)
+          setUser(JSON.stringify(user))
+          setRole(role)
+
+          setAuth({
+            ...user,
+          })
+          message.success($t('page.login.register.success'))
+          navigate('/')
+        } else {
+          message.error($t('request.noPermission'))
+        }
       }
     } catch (error) {
-      message.error($t('request.logout'))
       console.error(error)
+      message.error(error.msg || $t('request.logout'))
     } finally {
       setLoading(false)
     }

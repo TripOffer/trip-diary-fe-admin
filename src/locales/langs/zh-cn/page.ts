@@ -122,6 +122,7 @@ const page: App.I18n.Schema['translation']['page'] = {
       protocol: '《用户协议》',
       title: '注册账号',
       success: '注册成功',
+      repeatError: '用户名已存在',
     },
     resetPwd: {
       title: '重置密码',

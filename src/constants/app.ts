@@ -1,4 +1,10 @@
 import { transformRecordToOption } from '@/utils/common.ts'
+export enum RoleEnum {
+  Admin = 'admin',
+  User = 'user',
+  Reviewer = 'reviewer',
+  Super = 'super',
+}
 
 export const GLOBAL_HEADER_MENU_ID = '__GLOBAL_HEADER_MENU__'
 

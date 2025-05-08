@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useTokenStore } from '@/store/token'
-import { useNavigate } from 'react-router'
 import { camelToSnake } from '@/service/request/snakeCaseHelper.ts'
 
 const http = axios.create({
@@ -14,7 +13,6 @@ const http = axios.create({
 http.interceptors.request.use(
   config => {
     const token = useTokenStore.getState().token
-    console.log(`get token: ${token}`)
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`
     }
@@ -52,9 +50,13 @@ http.interceptors.response.use(
   },
   error => {
     console.error('Failed to parse response data:', error)
-    if (error.response && (error.response.status === 403 || error.response.status === 401)) {
+    if (
+      error.response &&
+      (error.response.status == 403 || error.response.status == 401 || error.response.status == 400)
+    ) {
+      // console.error('Failed to parse response data:', error)
       useTokenStore.getState().clearToken()
-      useNavigate()('/auth/login', { replace: true })
+      window.location.href = '/#/auth/login'
       return Promise.reject(error.response.data)
     }
   }

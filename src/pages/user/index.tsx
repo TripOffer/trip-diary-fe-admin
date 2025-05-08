@@ -122,39 +122,6 @@ const UserPage = () => {
     }
   }
 
-  const handleDeleteAccount = () => {
-    setDeleteModalVisible(true)
-  }
-
-  const confirmDeleteAccount = async () => {
-    if (!deletePassword) {
-      message.error($t('form.pwd.required'))
-      return
-    }
-
-    setLoading(true)
-    try {
-      await Api.authApi.deleteAccount({
-        password: deletePassword,
-      })
-      localStorage.removeItem('user_token')
-      message.success($t('common.deleteSuccess'))
-      setDeleteModalVisible(false)
-      resetAuth()
-      navigate('/auth/login', { replace: true })
-    } catch (error) {
-      message.error($t('request.logout'))
-      console.error(error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const cancelDeleteAccount = () => {
-    setDeleteModalVisible(false)
-    setDeletePassword('')
-  }
-
   return (
     <div className="container mx-auto p-6 max-w-6xl">
       <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
@@ -194,17 +161,6 @@ const UserPage = () => {
                   {bio || $t('page.manage.userDetail.explain')}
                 </p>
               </div>
-
-              <Button
-                type="primary"
-                danger
-                icon={(<DeleteOutlined />) as React.ReactNode}
-                onClick={handleDeleteAccount}
-                size="large"
-                className="hover:opacity-90 transition-opacity"
-              >
-                {$t('common.delete')}
-              </Button>
             </div>
           </Spin>
         </Card>
@@ -298,33 +254,6 @@ const UserPage = () => {
           </Spin>
         </Card>
       </div>
-
-      <Modal
-        title={
-          (
-            <span className="text-red-500 font-bold">{$t('common.confirmDelete')}</span>
-          ) as React.ReactNode
-        }
-        open={deleteModalVisible}
-        onOk={confirmDeleteAccount}
-        onCancel={cancelDeleteAccount}
-        okText={$t('common.confirm')}
-        cancelText={$t('common.cancel')}
-        okButtonProps={{ danger: true }}
-        centered
-        className="user-delete-modal"
-      >
-        <div className="py-4">
-          <p className="text-lg mb-4">{$t('common.warningDelete')}</p>
-          <p className="mb-4">{$t('common.deleteHint')}</p>
-          <Input.Password
-            placeholder={$t('form.pwd.required')}
-            value={deletePassword}
-            onChange={e => setDeletePassword(e.target.value)}
-            className="w-full"
-          />
-        </div>
-      </Modal>
     </div>
   )
 }

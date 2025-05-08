@@ -13,7 +13,7 @@ import LangSwitch from '@/features/lang/LangSwitch.tsx'
 const LoginPage = () => {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
-  const { setEmail, setToken, setUser, ...tokenData } = useTokenStore()
+  const { setEmail, setToken, setUser, setRole, ...tokenData } = useTokenStore()
   const { form } = Form.useForm()
   const { setAuth } = useAuthStore()
 
@@ -24,25 +24,30 @@ const LoginPage = () => {
       const response = await Api.authApi.login(loginData)
       if (response && response.data) {
         const { token, user } = response.data
-        setToken(token)
-        setUser(JSON.stringify(user))
+        const role = user.role
+        if (role && role !== 'User') {
+          setToken(token)
+          setUser(JSON.stringify(user))
+          setRole(role)
 
-        if (remember) {
-          setEmail(values.email)
+          if (remember) {
+            setEmail(values.email)
+          } else {
+            setEmail('')
+          }
+
+          setAuth({
+            ...user,
+          })
+
+          message.success($t('page.login.common.loginSuccess'))
+          navigate('/')
         } else {
-          setEmail('')
+          message.error($t('request.noPermission'))
         }
-
-        setAuth({
-          ...user,
-        })
-
-        message.success($t('page.login.common.loginSuccess'))
-        navigate('/')
       }
     } catch (error) {
-      message.error($t('request.logoutMsg'))
-      console.error(error)
+      message.error(error.msg || $t('request.logout'))
     } finally {
       setLoading(false)
     }

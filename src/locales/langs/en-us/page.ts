@@ -122,6 +122,7 @@ const page: App.I18n.Schema['translation']['page'] = {
       protocol: '《User Agreement》',
       title: 'Register',
       success: 'Successfully registered!',
+      repeatError: 'Username already exists',
     },
     resetPwd: {
       title: 'Reset Password',
