@@ -40,6 +40,22 @@ const UserPage = () => {
     }
   }
 
+  const convertGender = (gender: string) => {
+    switch (gender) {
+      case '男':
+      case 'male':
+        return 'male'
+      case '女':
+      case 'female':
+        return 'female'
+      case '秘密':
+      case 'secret':
+        return 'secret'
+      default:
+        return 'secret'
+    }
+  }
+
   const fetchUserInfo = async () => {
     setLoading(true)
     try {
@@ -88,13 +104,13 @@ const UserPage = () => {
       await Api.UserApi.updateUserInfo({
         name: values.username,
         bio: values.bio,
-        gender: values.gender,
+        gender: convertGender(values.gender),
         birthday: values.birthday,
       })
       setAuth({
         username: values.username,
         bio: values.bio,
-        gender: values.gender,
+        gender: parseGender(values.gender),
         birthday: values.birthday,
       })
       message.success($t('common.modifySuccess'))

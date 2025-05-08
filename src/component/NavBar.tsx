@@ -53,6 +53,7 @@ const NavBar = ({ children }: PropsWithChildren) => {
         collapsed={collapsed}
         style={{
           backgroundColor: '#f9f9f9', // 你想要的浅色背景
+          minHeight: '100vh',
         }}
         width={collapsed ? 64 : 300}
       >
@@ -68,17 +69,17 @@ const NavBar = ({ children }: PropsWithChildren) => {
             {
               key: '1',
               icon: <Icon icon="mdi-light:home" width="24" height="24" />,
-              label: $t('page.manage.menu.home'),
+              label: <span className="text-lg">{$t('page.manage.menu.home')}</span>,
             },
             {
               key: '2',
               icon: <Icon icon="material-symbols-light:menu" width="24" height="24" />,
-              label: $t('route.(base)_multi-menu'),
+              label: <span className="text-lg">{$t('route.(base)_multi-menu')}</span>,
             },
             {
               key: '3',
               icon: <Icon icon="clarity:help-info-line" width="24" height="24" />,
-              label: $t('page.about.title'),
+              label: <span className="text-lg">{$t('page.about.title')}</span>,
             },
           ]}
         />

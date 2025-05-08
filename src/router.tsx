@@ -6,6 +6,7 @@ import RegisterPage from '@/pages/auth/register.tsx'
 import NotFoundPage from '@/pages/404.tsx'
 import ProtectedRoute from '@/component/ProtectedRoute.tsx'
 import UserPage from '@/pages/user/index.tsx'
+import { Navigate } from 'react-router'
 
 const routes: RouteObject[] = [
   {
@@ -16,6 +17,10 @@ const routes: RouteObject[] = [
       </ProtectedRoute>
     ),
     children: [
+      {
+        index: true, // 等价于 path: '', 会匹配 "/"
+        element: <Navigate to="/user" replace />,
+      },
       {
         path: '/user',
         element: <UserPage />,
