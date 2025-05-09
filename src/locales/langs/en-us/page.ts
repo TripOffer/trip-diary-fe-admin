@@ -74,7 +74,7 @@ const page: App.I18n.Schema['translation']['page'] = {
     study: 'Study',
     todo: 'Todo',
     turnover: 'Turnover',
-    visitCount: 'Visit Count',
+    visitCount: 'User Management',
     weatherDesc: 'Today is cloudy to clear, 20℃ - 25℃!',
     work: 'Work',
   },

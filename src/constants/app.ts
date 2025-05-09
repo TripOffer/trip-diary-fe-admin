@@ -1,9 +1,9 @@
 import { transformRecordToOption } from '@/utils/common.ts'
 export enum RoleEnum {
-  Admin = 'admin',
-  User = 'user',
-  Reviewer = 'reviewer',
-  Super = 'super',
+  Admin = 'Admin',
+  User = 'User',
+  Reviewer = 'Reviewer',
+  Super = 'Super',
 }
 
 export enum SummaryStatsType {

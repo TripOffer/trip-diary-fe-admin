@@ -1,4 +1,4 @@
-import { Badge, Button, Modal, Popover, message, Layout, Menu } from 'antd'
+import { Button, Layout, Menu, message, Modal, Popover } from 'antd'
 import { useNavigate } from 'react-router'
 import useAuthStore from '@/store/auth.ts'
 import NavIcon from '@/component/icon/NavIcon.tsx'
@@ -8,19 +8,61 @@ import LangSwitch from '@/features/lang/LangSwitch.tsx'
 import { PropsWithChildren, useState } from 'react'
 import Sider from 'antd/es/layout/Sider'
 import { Icon } from '@iconify/react'
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { Content, Header } from 'antd/es/layout/layout'
+import { useTokenStore } from '@/store/token.ts'
+import { RoleEnum } from '@/constants/app.ts'
 
 const NavBar = ({ children }: PropsWithChildren) => {
   const [collapsed, setCollapsed] = useState(false)
   const navigate = useNavigate()
   const { resetAuth } = useAuthStore()
+  const role = useTokenStore.getState().role
+  console.log(role)
+  const menuItems = [
+    {
+      key: '1',
+      icon: <Icon icon="mdi-light:home" width="24" height="24" />,
+      label: <span className="text-lg">{$t('page.manage.menu.home')}</span>,
+    },
+    {
+      key: '2',
+      icon: <Icon icon="material-symbols-light:menu" width="24" height="24" />,
+      label: <span className="text-lg">{$t('route.(base)_multi-menu')}</span>,
+      children: [
+        {
+          key: '2-1',
+          icon: <Icon icon="mynaui:search" width="24" height="24" />,
+          label: <span className="text-lg">{$t('route.(base)_multi-menu_first')}</span>,
+        },
+        {
+          key: '2-2',
+          icon: <Icon icon="guidance:waiting-room" width="24" height="24" />,
+          label: <span className="text-lg">{$t('route.(base)_multi-menu_second')}</span>,
+        },
+        {
+          key: '2-3',
+          icon: <Icon icon="carbon:task-approved" width="24" height="24" />,
+          label: <span className="text-lg">{$t('route.(base)_multi-menu_third')}</span>,
+        },
+        {
+          key: '2-4',
+          icon: <Icon icon="fluent:text-change-reject-20-regular" width="24" height="24" />,
+          label: <span className="text-lg">{$t('route.(base)_multi-menu_fourth')}</span>,
+        },
+      ],
+    },
+    (role === RoleEnum.Admin || role === RoleEnum.Super) && {
+      key: '3',
+      icon: <Icon icon="pepicons-pencil:people" width="20" height="20" />,
+      label: <span className="text-lg">{$t('page.home.visitCount')}</span>,
+    },
+    {
+      key: '4',
+      icon: <Icon icon="clarity:help-info-line" width="24" height="24" />,
+      label: <span className="text-lg">{$t('page.about.title')}</span>,
+    },
+  ]
 
   const handleLogout = () => {
     Modal.confirm({
@@ -50,6 +92,20 @@ const NavBar = ({ children }: PropsWithChildren) => {
       case '1':
         navigate('/')
         break
+      case '2-1':
+        navigate('/search')
+        break
+      case '2-2':
+        navigate('/tweets?status=Pending')
+        break
+      case '2-3':
+        navigate('/tweets?status=Approved')
+        break
+      case '2-4':
+        navigate('/tweets?status=Rejected')
+        break
+      case '3':
+        break
       default:
         break
     }
@@ -76,45 +132,7 @@ const NavBar = ({ children }: PropsWithChildren) => {
           mode="inline"
           defaultSelectedKeys={['1']}
           onClick={handleClick}
-          items={[
-            {
-              key: '1',
-              icon: <Icon icon="mdi-light:home" width="24" height="24" />,
-              label: <span className="text-lg">{$t('page.manage.menu.home')}</span>,
-            },
-            {
-              key: '2',
-              icon: <Icon icon="material-symbols-light:menu" width="24" height="24" />,
-              label: <span className="text-lg">{$t('route.(base)_multi-menu')}</span>,
-              children: [
-                {
-                  key: '2-1',
-                  icon: <Icon icon="mynaui:search" width="24" height="24" />,
-                  label: <span className="text-lg">{$t('route.(base)_multi-menu_first')}</span>,
-                },
-                {
-                  key: '2-2',
-                  icon: <Icon icon="guidance:waiting-room" width="24" height="24" />,
-                  label: <span className="text-lg">{$t('route.(base)_multi-menu_second')}</span>,
-                },
-                {
-                  key: '2-3',
-                  icon: <Icon icon="carbon:task-approved" width="24" height="24" />,
-                  label: <span className="text-lg">{$t('route.(base)_multi-menu_third')}</span>,
-                },
-                {
-                  key: '2-4',
-                  icon: <Icon icon="fluent:text-change-reject-20-regular" width="24" height="24" />,
-                  label: <span className="text-lg">{$t('route.(base)_multi-menu_fourth')}</span>,
-                },
-              ],
-            },
-            {
-              key: '3',
-              icon: <Icon icon="clarity:help-info-line" width="24" height="24" />,
-              label: <span className="text-lg">{$t('page.about.title')}</span>,
-            },
-          ]}
+          items={menuItems}
         />
       </Sider>
       <Layout className="flex-1 flex flex-col">

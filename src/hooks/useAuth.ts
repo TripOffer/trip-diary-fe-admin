@@ -6,7 +6,6 @@ import { message } from 'antd'
 
 const useAuth = () => {
   const token = useTokenStore(token => token)
-  console.log(token)
   const navigate = useNavigate()
   useEffect(() => {
     if (token.role === RoleEnum.User) {
