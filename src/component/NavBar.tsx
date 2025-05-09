@@ -86,6 +86,28 @@ const NavBar = ({ children }: PropsWithChildren) => {
               key: '2',
               icon: <Icon icon="material-symbols-light:menu" width="24" height="24" />,
               label: <span className="text-lg">{$t('route.(base)_multi-menu')}</span>,
+              children: [
+                {
+                  key: '2-1',
+                  icon: <Icon icon="mynaui:search" width="24" height="24" />,
+                  label: <span className="text-lg">{$t('route.(base)_multi-menu_first')}</span>,
+                },
+                {
+                  key: '2-2',
+                  icon: <Icon icon="guidance:waiting-room" width="24" height="24" />,
+                  label: <span className="text-lg">{$t('route.(base)_multi-menu_second')}</span>,
+                },
+                {
+                  key: '2-3',
+                  icon: <Icon icon="carbon:task-approved" width="24" height="24" />,
+                  label: <span className="text-lg">{$t('route.(base)_multi-menu_third')}</span>,
+                },
+                {
+                  key: '2-4',
+                  icon: <Icon icon="fluent:text-change-reject-20-regular" width="24" height="24" />,
+                  label: <span className="text-lg">{$t('route.(base)_multi-menu_fourth')}</span>,
+                },
+              ],
             },
             {
               key: '3',
