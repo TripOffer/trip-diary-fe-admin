@@ -1,11 +1,11 @@
 import authApi from './auth'
-import UserApi from './user'
-import TestApi from '@/service/api/test.ts'
+import userApi from './user'
+import testApi from '@/service/api/test.ts'
 
 const Api = {
   authApi,
-  UserApi,
-  TestApi,
+  userApi,
+  testApi,
 }
 
 export default Api

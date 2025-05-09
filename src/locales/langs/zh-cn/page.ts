@@ -263,6 +263,8 @@ const page: App.I18n.Schema['translation']['page'] = {
       bio: '个人简介：',
     },
     userDetail: {
+      welcomeOne: '欢迎回来，',
+      welcomeTwo: '今天又会有什么令人眼前一亮的新故事呢？',
       content: `loader 会让网络请求跟懒加载的文件几乎一起发出请求 然后 一边解析懒加载的文件 一边去等待 网络请求
         待到网络请求完成页面 一起显示 配合react的fiber架构 可以做到 用户如果嫌弃等待时间较长 在等待期间用户可以去
         切换不同的页面 这是react 框架和react-router数据路由器的优势 而不用非得等到 页面的显现 而不是常规的

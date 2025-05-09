@@ -59,7 +59,7 @@ const UserPage = () => {
   const fetchUserInfo = async () => {
     setLoading(true)
     try {
-      const userInfo = await Api.UserApi.getUserInfo()
+      const userInfo = await Api.userApi.getUserInfo()
       // console.log(userInfo)
       setAuth({
         userId: userInfo.id,
@@ -101,7 +101,7 @@ const UserPage = () => {
   }) => {
     setLoading(true)
     try {
-      await Api.UserApi.updateUserInfo({
+      await Api.userApi.updateUserInfo({
         name: values.username,
         bio: values.bio,
         gender: convertGender(values.gender),

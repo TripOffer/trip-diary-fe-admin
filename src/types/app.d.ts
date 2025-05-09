@@ -343,6 +343,8 @@ declare namespace App {
               bio: string
             }
             userDetail: {
+              welcomeOne: string
+              welcomeTwo: string
               content: string
               explain: string
             }
