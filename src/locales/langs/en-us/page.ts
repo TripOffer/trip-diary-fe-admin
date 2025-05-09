@@ -135,6 +135,9 @@ const page: App.I18n.Schema['translation']['page'] = {
       status: {
         disable: 'Disable',
         enable: 'Enable',
+        waiting: 'Waiting',
+        approved: 'Approved',
+        rejected: 'Rejected',
       },
     },
     menu: {

@@ -51,6 +51,7 @@ const common: App.I18n.Schema['translation']['common'] = {
   warningDelete:
     'Warning: Deleting an account is a permanent action and all data will be deleted! Please proceed with caution.',
   deleteHint: 'Please enter your password to confirm deleting the account:',
+  loadingFail: 'Loading failed, please try again',
 }
 
 export default common

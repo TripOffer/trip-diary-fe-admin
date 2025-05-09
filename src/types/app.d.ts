@@ -67,6 +67,7 @@ declare namespace App {
           hint404: string
           deleteHint: string
           warningDelete: string
+          loadingFail: string
         }
         form: {
           code: FormMsg
@@ -215,6 +216,9 @@ declare namespace App {
               status: {
                 disable: string
                 enable: string
+                waiting: string
+                approved: string
+                rejected: string
               }
             }
             menu: {
