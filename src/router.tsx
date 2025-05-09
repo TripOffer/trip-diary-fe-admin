@@ -7,6 +7,7 @@ import NotFoundPage from '@/pages/404.tsx'
 import ProtectedRoute from '@/component/ProtectedRoute.tsx'
 import UserPage from '@/pages/user/index.tsx'
 import { Navigate } from 'react-router'
+import HomePage from '@/pages/home'
 
 const routes: RouteObject[] = [
   {
@@ -18,8 +19,8 @@ const routes: RouteObject[] = [
     ),
     children: [
       {
-        index: true, // 等价于 path: '', 会匹配 "/"
-        element: <Navigate to="/user" replace />,
+        path: '/',
+        element: <HomePage />,
       },
       {
         path: '/user',

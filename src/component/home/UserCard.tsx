@@ -10,7 +10,7 @@ const UserCard = ({ userName }: { userName: string }) => {
         <span className="text-blue-700">{userName}</span>
       </div>
       <div className="text-xl font-light text-gray-600">
-        {$t('page.manage.userDetail.welcomeOne')}
+        {$t('page.manage.userDetail.welcomeTwo')}
       </div>
     </div>
   )

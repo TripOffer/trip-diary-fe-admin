@@ -45,6 +45,16 @@ const NavBar = ({ children }: PropsWithChildren) => {
     </div>
   )
 
+  const handleClick = ({ key }: { key: string }) => {
+    switch (key) {
+      case '1':
+        navigate('/')
+        break
+      default:
+        break
+    }
+  }
+
   return (
     <Layout className="w-full flex min-h-screen">
       <Sider
@@ -65,6 +75,7 @@ const NavBar = ({ children }: PropsWithChildren) => {
           theme="light"
           mode="inline"
           defaultSelectedKeys={['1']}
+          onClick={handleClick}
           items={[
             {
               key: '1',
