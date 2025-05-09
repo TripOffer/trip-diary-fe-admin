@@ -216,7 +216,7 @@ declare namespace App {
               status: {
                 disable: string
                 enable: string
-                waiting: string
+                pending: string
                 approved: string
                 rejected: string
               }

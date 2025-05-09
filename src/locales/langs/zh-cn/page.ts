@@ -135,7 +135,7 @@ const page: App.I18n.Schema['translation']['page'] = {
       status: {
         disable: '禁用',
         enable: '启用',
-        waiting: '待审核',
+        pending: '待审核',
         approved: '已通过',
         rejected: '已拒绝',
       },

@@ -6,6 +6,31 @@ export enum RoleEnum {
   Super = 'super',
 }
 
+export enum SummaryStatsType {
+  UserRegister = 'user_register',
+  UserActive = 'user_active',
+  DiaryCreate = 'diary_create',
+  DiaryView = 'diary_view',
+  DiaryLike = 'diary_like',
+  DiaryFavorite = 'diary_favorite',
+  DiaryShare = 'diary_share',
+  DiaryComment = 'diary_comment',
+  DiaryApproved = 'diary_approved',
+  DiaryRejected = 'diary_rejected',
+  DiaryPending = 'diary_pending',
+  CommentCreate = 'comment_create',
+  CommentLike = 'comment_like',
+  CommentReply = 'comment_reply',
+  TagCreate = 'tag_create',
+  TagView = 'tag_view',
+}
+
+export enum Period {
+  Day = 'day',
+  Week = 'week',
+  Month = 'month',
+}
+
 export const GLOBAL_HEADER_MENU_ID = '__GLOBAL_HEADER_MENU__'
 
 export const GLOBAL_SIDER_MENU_ID = '__GLOBAL_SIDER_MENU__'

@@ -1,7 +1,7 @@
 import { createImmerStore } from '@/store/factory.ts'
 
 interface RefetchState {
-  refetchWaitingList: (() => void) | null
+  refetchPendingList: (() => void) | null
   refetchApprovedList: (() => void) | null
   refetchRejectedList: (() => void) | null
   refetchAll: (() => void) | null
@@ -9,7 +9,7 @@ interface RefetchState {
 }
 
 interface RefetchActions {
-  setRefetchWaitingList: (refetch: RefetchState['refetchWaitingList']) => void
+  setRefetchPendingList: (refetch: RefetchState['refetchPendingList']) => void
   setRefetchApprovedList: (refetch: RefetchState['refetchApprovedList']) => void
   setRefetchRejectedList: (refetch: RefetchState['refetchRejectedList']) => void
   setRefetchStatus: (refetch: RefetchState['refetchStatus']) => void
@@ -17,11 +17,11 @@ interface RefetchActions {
 
 export const useRefetchStore = createImmerStore<RefetchState, RefetchActions>(
   {
-    refetchWaitingList: null,
+    refetchPendingList: null,
     refetchApprovedList: null,
     refetchRejectedList: null,
     refetchAll() {
-      this.refetchWaitingList?.()
+      this.refetchPendingList?.()
       this.refetchApprovedList?.()
       this.refetchRejectedList?.()
       this.refetchStatus?.()
@@ -29,9 +29,9 @@ export const useRefetchStore = createImmerStore<RefetchState, RefetchActions>(
     refetchStatus: null,
   },
   set => ({
-    setRefetchWaitingList: refetchState => {
+    setRefetchPendingList: refetchState => {
       set(state => {
-        state.refetchWaitingList = refetchState
+        state.refetchPendingList = refetchState
       })
     },
     setRefetchApprovedList: refetchState => {
