@@ -220,6 +220,11 @@ declare namespace App {
                 approved: string
                 rejected: string
               }
+              total: {
+                tweets: string
+                users: string
+                comments: string
+              }
             }
             menu: {
               activeMenu: string

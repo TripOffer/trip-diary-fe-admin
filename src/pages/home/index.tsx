@@ -8,6 +8,13 @@ import { RoleEnum } from '@/constants/app.ts'
 import Api from '@/service/api'
 import UserCard from '@/component/home/UserCard.tsx'
 import Status from '@/component/home/Status.tsx'
+import pending from '@/assets/pending.svg'
+import approved from '@/assets/approved.svg'
+import rejected from '@/assets/rejected.svg'
+import people from '@/assets/people.svg'
+import comments from '@/assets/comments.svg'
+import tweets from '@/assets/tweets.svg'
+import { $t } from '@/locales'
 
 const HomePage = () => {
   const { setRefetchStatus } = useRefetchStore()
@@ -28,9 +35,29 @@ const HomePage = () => {
       <UserCard userName={name} />
       <Status
         {...{
+          pIcon: pending,
+          aIcon: approved,
+          rIcon: rejected,
+          pTitle: $t('page.manage.common.status.pending'),
+          aTitle: $t('page.manage.common.status.approved'),
+          rTitle: $t('page.manage.common.status.rejected'),
           pending: data?.diary.pending,
           approved: data?.diary.approved,
           rejected: data?.diary.rejected,
+          isLoading,
+        }}
+      />
+      <Status
+        {...{
+          pIcon: people,
+          aIcon: comments,
+          rIcon: tweets,
+          pTitle: $t('page.manage.common.total.users'),
+          aTitle: $t('page.manage.common.total.comments'),
+          rTitle: $t('page.manage.common.total.tweets'),
+          pending: data?.user.total,
+          approved: data?.comment.total,
+          rejected: data?.diary.total,
           isLoading,
         }}
       />

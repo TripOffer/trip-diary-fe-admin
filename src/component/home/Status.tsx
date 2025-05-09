@@ -1,11 +1,14 @@
 import { createContext } from 'react'
 import StatusCard from '@/component/common/StatusCard'
-import pending from '@/assets/pending.svg'
-import approved from '@/assets/approved.svg'
-import rejected from '@/assets/rejected.svg'
 import { $t } from '@/locales'
 
 interface StatusType {
+  pIcon: string
+  aIcon: string
+  rIcon: string
+  pTitle?: string
+  aTitle?: string
+  rTitle?: string
   pending?: number
   approved?: number
   rejected?: number
@@ -19,20 +22,20 @@ const Status = (props: StatusType) => {
     <UserInfoStatusContext.Provider value={props.isLoading}>
       <div className="w-full row-center flex-row gap-5 py-2">
         <StatusCard
-          icon={pending}
-          title={$t('page.manage.common.status.pending')}
+          icon={props.pIcon}
+          title={props.pTitle}
           num={props.pending}
           gradient="from-blue-50 to-blue-100"
         />
         <StatusCard
-          icon={approved}
-          title={$t('page.manage.common.status.approved')}
+          icon={props.aIcon}
+          title={props.aTitle}
           num={props.approved}
           gradient="from-green-50 to-green-100"
         />
         <StatusCard
-          icon={rejected}
-          title={$t('page.manage.common.status.rejected')}
+          icon={props.rIcon}
+          title={props.rTitle}
           num={props.rejected}
           gradient="from-purple-50 to-purple-100"
         />

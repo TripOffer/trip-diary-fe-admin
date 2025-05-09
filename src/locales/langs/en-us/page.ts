@@ -135,9 +135,14 @@ const page: App.I18n.Schema['translation']['page'] = {
       status: {
         disable: 'Disable',
         enable: 'Enable',
-        pending: 'Pending',
-        approved: 'Approved',
-        rejected: 'Rejected',
+        pending: 'Pending Tweets',
+        approved: 'Approved Tweets',
+        rejected: 'Rejected Tweets',
+      },
+      total: {
+        tweets: 'Total Tweets',
+        users: 'Total Users',
+        comments: 'Total Comments',
       },
     },
     menu: {

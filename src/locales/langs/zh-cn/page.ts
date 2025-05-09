@@ -135,9 +135,14 @@ const page: App.I18n.Schema['translation']['page'] = {
       status: {
         disable: '禁用',
         enable: '启用',
-        pending: '待审核',
-        approved: '已通过',
-        rejected: '已拒绝',
+        pending: '待审核推文',
+        approved: '已通过推文',
+        rejected: '已拒绝推文',
+      },
+      total: {
+        tweets: '推文总数',
+        users: '用户总数',
+        comments: '评论总数',
       },
     },
     menu: {
