@@ -71,12 +71,12 @@ const page: App.I18n.Schema['translation']['page'] = {
     registerCount: '观看数',
     rest: '收藏数',
     schedule: '标题',
-    study: '学习',
-    todo: '待办',
-    turnover: '成交额',
+    study: '上次更新',
+    todo: '赞',
+    turnover: '浏览',
     visitCount: '用户管理',
     weatherDesc: '今日多云转晴，20℃ - 25℃!',
-    work: '工作',
+    work: '评论',
   },
   login: {
     bindWeChat: {

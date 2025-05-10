@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Cascader, Dropdown, Input, MenuProps, message, Space } from 'antd'
+import { Cascader, Divider, Dropdown, Input, MenuProps, message, Space, Table, Tag } from 'antd'
 import { Icon } from '@iconify/react'
 import { $t } from '@/locales'
 import { sortBy } from '@/constants/app.ts'
 import { DiarySearch, SearchReq } from '@/service/api/Diary/types.ts'
 import Api from '@/service/api'
+import { Link } from 'react-router'
+import styles from '@/pages/tweets/index.module.scss'
 
 interface Option {
   value: string
@@ -12,12 +14,137 @@ interface Option {
   children?: Option[]
 }
 
+const PAGE_SIZE = 10
+
 const SearchPage = () => {
   const [data, setData] = useState<DiarySearch[]>([])
   const [loading, setLoading] = useState(false)
-  const [keyword, setKeyword] = useState(sortBy.PublishedAt)
+  const [keyword, setKeyword] = useState(sortBy.PublishedAt.toString())
   const [page, setPage] = useState(1)
   const [total, setTotal] = useState(0)
+
+  const columns = [
+    {
+      title: $t('page.home.dealCount'),
+      dataIndex: 'title',
+      width: '250px',
+      render: (text, record) => (
+        <Link className={styles.myLink} to={`/post/${record.id}`}>
+          {text}
+        </Link>
+      ),
+      onCell: () => ({
+        style: {
+          minWidth: '250px',
+        },
+      }),
+    },
+    {
+      title: $t('page.home.downloadCount'),
+      dataIndex: 'tags',
+      width: '150px',
+      render: tags => {
+        return (
+          <Space>
+            {tags.map(tag => (
+              <Tag color="blue" key={tag.id}>
+                {tag.name}
+              </Tag>
+            ))}
+          </Space>
+        )
+      },
+      onCell: () => ({
+        style: {
+          minWidth: '150px',
+        },
+      }),
+    },
+    {
+      title: $t('page.home.entertainment'),
+      dataIndex: 'author',
+      key: 'author',
+      render: author => {
+        return author.name
+      },
+      width: '130px',
+      onCell: () => ({
+        style: {
+          minWidth: '130px',
+        },
+      }),
+    },
+    {
+      title: $t('page.home.todo'),
+      dataIndex: 'likeCount',
+      key: 'likeCount',
+      width: '80px',
+      sorter: true,
+      onCell: () => ({
+        style: {
+          minWidth: '80px',
+        },
+      }),
+    },
+    {
+      title: $t('page.home.turnover'),
+      dataIndex: 'viewCount',
+      key: 'viewCount',
+      width: '80px',
+      sorter: true,
+      onCell: () => ({
+        style: {
+          minWidth: '80px',
+        },
+      }),
+    },
+    {
+      title: $t('page.home.work'),
+      dataIndex: 'commentCount',
+      key: 'commentCount',
+      width: '80px',
+      sorter: true,
+      onCell: () => ({
+        style: {
+          minWidth: '80px',
+        },
+      }),
+    },
+    {
+      title: $t('page.home.greeting'),
+      dataIndex: 'publishedAt',
+      key: 'publishedAt',
+      render: publishedAt => {
+        return new Date(publishedAt).toLocaleString()
+      },
+      sorter: (a, b) => {
+        return new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime()
+      },
+      width: '180px',
+      onCell: () => ({
+        style: {
+          minWidth: '180px',
+        },
+      }),
+    },
+    {
+      title: $t('page.home.study'),
+      dataIndex: 'updatedAt',
+      key: 'updatedAt',
+      render: updatedAt => {
+        return new Date(updatedAt).toLocaleString()
+      },
+      sorter: (a, b) => {
+        return new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
+      },
+      width: '180px',
+      onCell: () => ({
+        style: {
+          minWidth: '180px',
+        },
+      }),
+    },
+  ]
 
   const options: Option[] = [
     {
@@ -42,15 +169,18 @@ const SearchPage = () => {
     },
   ]
 
-  const fetchData = async (page: number) => {
+  const fetchData = async (page: number, query: string = '') => {
     setLoading(true)
     try {
       const res = await Api.diaryApi.search({
+        query,
         sort: keyword,
         page,
-        size: 10,
+        size: PAGE_SIZE,
       } as SearchReq)
       console.log(res)
+      setData(res.list)
+      setTotal(res.total)
     } catch (error) {
       console.error('Error fetching data:', error)
     } finally {
@@ -62,10 +192,12 @@ const SearchPage = () => {
     fetchData(page)
   }, [page])
 
-  const handleSearch = (value: string) => {}
+  const handleSearch = (value: string) => {
+    fetchData(1, value)
+  }
 
   const handleCascaderChange = (value: string) => {
-    message.info(`Selected value: ${value}`)
+    // message.info(`Selected value: ${value}`)
     setKeyword(value)
   }
 
@@ -80,7 +212,7 @@ const SearchPage = () => {
         size="large"
         addonBefore={
           <Cascader
-            prefix={<Icon icon="stash:filter" width="24" height="24" />}
+            prefix={<Icon icon="basil:sort-outline" width="24" height="24" />}
             options={options}
             onChange={handleCascaderChange}
             defaultValue={[keyword]}
@@ -88,13 +220,22 @@ const SearchPage = () => {
           />
         }
         enterButton={$t('page.home.projectNews.desc2')}
-        onSearch={value => {
-          setLoading(true)
-          setTimeout(() => {
-            setLoading(false)
-            message.success(`Searching for ${value}`)
-          }, 1000)
+        onSearch={handleSearch}
+      />
+      <Divider />
+      <Table
+        scroll={{ x: 'max-content' }}
+        rowKey={record => record.id}
+        loading={loading}
+        dataSource={data}
+        columns={columns}
+        pagination={{
+          current: page,
+          pageSize: PAGE_SIZE,
+          total,
+          showSizeChanger: false,
         }}
+        onChange={pagination => setPage(pagination.current)}
       />
     </div>
   )

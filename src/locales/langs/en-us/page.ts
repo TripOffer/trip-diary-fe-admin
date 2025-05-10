@@ -71,12 +71,12 @@ const page: App.I18n.Schema['translation']['page'] = {
     registerCount: 'View Count',
     rest: 'Favorite Count',
     schedule: 'Title',
-    study: 'Study',
-    todo: 'Todo',
-    turnover: 'Turnover',
+    study: 'Last Updated',
+    todo: 'Likes',
+    turnover: 'Views',
     visitCount: 'User Management',
     weatherDesc: 'Today is cloudy to clear, 20℃ - 25℃!',
-    work: 'Work',
+    work: 'Comments',
   },
   login: {
     bindWeChat: {
