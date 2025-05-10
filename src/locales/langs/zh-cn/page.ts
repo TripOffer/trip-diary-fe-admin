@@ -58,7 +58,7 @@ const page: App.I18n.Schema['translation']['page'] = {
     entertainment: '娱乐',
     greeting: '早安，{{userName}}, 今天又是充满活力的一天!',
     message: '消息',
-    projectCount: '项目数',
+    projectCount: '总览',
     projectNews: {
       desc1: 'Soybean 在2021年5月28日创建了开源项目 soybean-admin!',
       desc2: 'Yanbowe 向 soybean-admin 提交了一个bug，多标签栏不会自适应。',

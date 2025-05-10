@@ -58,7 +58,7 @@ const page: App.I18n.Schema['translation']['page'] = {
     entertainment: 'Entertainment',
     greeting: 'Good morning, today is another day full of vitality!',
     message: 'Message',
-    projectCount: 'Project Count',
+    projectCount: 'Overview',
     projectNews: {
       desc1: 'Soybean created the open source project soybean-admin on May 28, 2021!',
       desc2: 'Yanbowe submitted a bug to soybean-admin, the multi-tab bar will not adapt.',

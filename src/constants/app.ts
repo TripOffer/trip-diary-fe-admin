@@ -31,6 +31,26 @@ export enum Period {
   Month = 'month',
 }
 
+export enum DiaryStatus {
+  Pending = 'Pending',
+  Approved = 'Approved',
+  Rejected = 'Rejected',
+}
+
+export enum sortBy {
+  CreateAt = 'createAt',
+  PublishedAt = 'publishedAt',
+  ViewCount = 'viewCount',
+  LikeCount = 'likeCount',
+  FavoriteCount = 'favoriteCount',
+  CommentCount = 'commentCount',
+}
+
+export enum sortOrder {
+  Asc = 'asc',
+  Desc = 'desc',
+}
+
 export const GLOBAL_HEADER_MENU_ID = '__GLOBAL_HEADER_MENU__'
 
 export const GLOBAL_SIDER_MENU_ID = '__GLOBAL_SIDER_MENU__'
