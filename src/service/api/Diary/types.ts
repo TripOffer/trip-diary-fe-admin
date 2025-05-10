@@ -1,7 +1,7 @@
 export interface ReviewListReq {
   query?: string
   status: string
-  authorId: number
+  authorId?: number
   sort?: string
   order?: string
   page: number

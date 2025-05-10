@@ -8,6 +8,7 @@ import ProtectedRoute from '@/component/ProtectedRoute.tsx'
 import UserPage from '@/pages/user/index.tsx'
 import { Navigate } from 'react-router'
 import HomePage from '@/pages/home'
+import TweetsPage from '@/pages/tweets'
 
 const routes: RouteObject[] = [
   {
@@ -25,6 +26,10 @@ const routes: RouteObject[] = [
       {
         path: '/user',
         element: <UserPage />,
+      },
+      {
+        path: '/tweets',
+        element: <TweetsPage />,
       },
     ],
   } as RouteObject,

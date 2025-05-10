@@ -52,11 +52,11 @@ const page: App.I18n.Schema['translation']['page'] = {
     },
   },
   home: {
-    creativity: 'Creativity',
-    dealCount: 'Deal Count',
-    downloadCount: 'Download Count',
-    entertainment: 'Entertainment',
-    greeting: 'Good morning, today is another day full of vitality!',
+    creativity: 'Diary List',
+    dealCount: 'Title',
+    downloadCount: 'Status',
+    entertainment: 'Author',
+    greeting: 'Created At',
     message: 'Message',
     projectCount: 'Overview',
     projectNews: {

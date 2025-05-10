@@ -18,7 +18,6 @@ const NavBar = ({ children }: PropsWithChildren) => {
   const navigate = useNavigate()
   const { resetAuth } = useAuthStore()
   const role = useTokenStore.getState().role
-  console.log(role)
   const menuItems = [
     {
       key: '1',

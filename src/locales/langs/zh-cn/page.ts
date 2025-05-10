@@ -52,11 +52,11 @@ const page: App.I18n.Schema['translation']['page'] = {
     },
   },
   home: {
-    creativity: '创意',
-    dealCount: '成交量',
-    downloadCount: '下载量',
-    entertainment: '娱乐',
-    greeting: '早安，{{userName}}, 今天又是充满活力的一天!',
+    creativity: '推文列表',
+    dealCount: '标题',
+    downloadCount: '状态',
+    entertainment: '编者',
+    greeting: '创建日期',
     message: '消息',
     projectCount: '总览',
     projectNews: {
