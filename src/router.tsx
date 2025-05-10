@@ -9,6 +9,8 @@ import UserPage from '@/pages/user/index.tsx'
 import { Navigate } from 'react-router'
 import HomePage from '@/pages/home'
 import TweetsPage from '@/pages/tweets'
+import SearchPage from '@/pages/search/search.tsx'
+import DiaryPage from '@/pages/detail/diary.tsx'
 
 const routes: RouteObject[] = [
   {
@@ -30,6 +32,14 @@ const routes: RouteObject[] = [
       {
         path: '/tweets',
         element: <TweetsPage />,
+      },
+      {
+        path: '/search',
+        element: <SearchPage />,
+      },
+      {
+        path: '/post/:id',
+        element: <DiaryPage />,
       },
     ],
   } as RouteObject,

@@ -1,7 +1,5 @@
 import { Link, useSearchParams } from 'react-router'
 import { useEffect, useState } from 'react'
-import { useInfiniteQuery } from '@tanstack/react-query'
-import ApiKeys from '@/constants/apiKeys.ts'
 import Api from '@/service/api'
 import { DiaryReview, ReviewListReq } from '@/service/api/Diary/types.ts'
 import { Divider, Table, Tag } from 'antd'
@@ -93,7 +91,6 @@ const TweetsPage = () => {
         page,
         size: PAGE_SIZE,
       } as ReviewListReq)
-      console.log(res)
       setData(res.list)
       setTotal(res.total)
     } catch (error) {
