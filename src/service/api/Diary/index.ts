@@ -25,7 +25,7 @@ class DiaryApi extends BaseApi {
     return res.data
   }
 
-  async getDiary(id: number) {
+  async getDiary(id: string) {
     const res = await this.http.get<DiaryDetail>(`/diary/${id}/detail`)
     return res.data
   }
