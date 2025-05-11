@@ -26,13 +26,13 @@ const local: App.I18n.Schema['translation'] = {
     unpin: 'Unpin',
   },
   system: {
-    errorReason: 'Cause Error',
-    reload: 'Reload Page',
-    title: 'SoybeanAdmin',
-    updateCancel: 'Later',
-    updateConfirm: 'Refresh immediately',
-    updateContent:
-      'A new version of the system has been detected. Do you want to refresh the page immediately?',
+    errorReason: 'Tags',
+    reload:
+      'Warning: Review rejection is an irreversible operation, and all data will be permanently deleted! Please operate with caution.',
+    title: 'Rejection Reason',
+    updateCancel: 'Operation Success',
+    updateConfirm: 'Operation Failure',
+    updateContent: 'Please input the reason for rejection.',
     updateTitle: 'System Version Update Notification',
   },
 }

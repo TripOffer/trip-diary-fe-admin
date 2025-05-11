@@ -114,3 +114,8 @@ export interface DiaryDetail {
   viewCount: number
   [property: string]: any
 }
+
+export interface DiaryReviewReq {
+  status: string
+  rejectedReason?: string
+}

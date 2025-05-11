@@ -1,18 +1,27 @@
-import { Avatar, Card, Carousel } from 'antd'
+import { Avatar, Button, Card, Carousel, message, Modal, Input } from 'antd'
 import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useParams, useSearchParams } from 'react-router'
 import Api from '@/service/api'
-import { DiaryDetail } from '@/service/api/Diary/types.ts'
+import { DiaryDetail, DiaryReviewReq } from '@/service/api/Diary/types.ts'
+import { DiaryStatus } from '@/constants/app.ts'
+import '@/pages/detail/index.module.css.scss'
+import { $t } from '@/locales'
+import { useNavigate } from 'react-router-dom'
 
 const prefix = import.meta.env.VITE_OSS_BASE_URL
 const DiaryPage = () => {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
+  const [btnLoading1, setBtnLoading1] = useState(false)
+  const [btnLoading2, setBtnLoading2] = useState(false)
   const { id } = useParams<{ id: string }>()
+  const [searchParams] = useSearchParams()
+  const [modalVisible, setModalVisible] = useState(false)
+  const [rejectedReason, setRejectedReason] = useState('')
+  const diaryStatus = searchParams.get('status') as DiaryStatus
   const [images, setImages] = useState<string[]>([])
-  const [slug, setSlug] = useState<string>()
   const [avatar, setAvatar] = useState<string>()
-  const [thumbnail, setThumbnail] = useState<string>()
   const [author, setAuthor] = useState<string>()
   const [likeCount, setLikeCount] = useState<number>(0)
   const [commentCount, setCommentCount] = useState<number>(0)
@@ -30,8 +39,6 @@ const DiaryPage = () => {
       const res = (await Api.diaryApi.getDiary(id!)) as DiaryDetail
       console.log(res)
       setImages(res.images.map(image => `${prefix}${image}`))
-      setSlug(`${prefix}{res.slug}`)
-      setThumbnail(`${prefix}${res.thumbnail}`)
 
       setAuthor(res.author.name)
       setAvatar(`${prefix}${res.author.avatar}`)
@@ -41,7 +48,6 @@ const DiaryPage = () => {
       const tagList = res.tags.map(tag => tag.name as string)
       setTags(tagList)
       const images = res.images.map(image => `${prefix}${image}`)
-      setSlug(`${prefix}${res.slug}`)
       setImages(images)
 
       setLikeCount(res.likeCount)
@@ -52,6 +58,31 @@ const DiaryPage = () => {
       console.error('Error fetching data:', error)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const handleClick = async (status: string) => {
+    if (status === 'Approved') {
+      setBtnLoading1(true)
+    } else {
+      setBtnLoading2(true)
+    }
+    try {
+      await Api.diaryApi.reviewTweets(id!, {
+        status,
+        rejectedReason,
+      } as DiaryReviewReq)
+      message.success($t('system.updateCancel'))
+      navigate(`/tweets?status=${status}`)
+    } catch (error) {
+      message.error($t('system.updateConfirm'))
+      console.error('Error fetching data:', error)
+    } finally {
+      if (status === 'Approved') {
+        setBtnLoading1(false)
+      } else {
+        setBtnLoading2(false)
+      }
     }
   }
 
@@ -68,10 +99,9 @@ const DiaryPage = () => {
           borderRadius: '12px',
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
           transition: 'transform 0.3s ease',
-          minHeight: '500px',
         }}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <Avatar src={avatar} />
             <span className="font-medium">{author}</span>
@@ -126,6 +156,78 @@ const DiaryPage = () => {
           </div>
         </div>
       </Card>
+      {diaryStatus === DiaryStatus.Pending && (
+        <div className="flex justify-around align-center mt-3">
+          <Button
+            type="primary"
+            size="large"
+            className="custom-btn-gradient custom-btn-approve"
+            loading={btnLoading1}
+            onClick={() => handleClick(DiaryStatus.Approved)}
+          >
+            <span
+              style={{
+                width: '150px',
+                textAlign: 'center',
+                fontSize: '20px',
+                fontWeight: 'bold',
+              }}
+            >
+              {$t('common.approve')}
+            </span>
+          </Button>
+          <Button
+            danger
+            size="large"
+            className="custom-btn-gradient custom-btn-reject"
+            onClick={() => setModalVisible(true)}
+          >
+            <span
+              style={{
+                width: '150px',
+                textAlign: 'center',
+                fontSize: '20px',
+                fontWeight: 'bold',
+              }}
+            >
+              {$t('common.reject')}
+            </span>
+          </Button>
+        </div>
+      )}
+
+      <Modal
+        title={
+          (<span className="text-red-500 font-bold">{$t('system.title')}</span>) as React.ReactNode
+        }
+        open={modalVisible}
+        onOk={() => handleClick(DiaryStatus.Rejected)}
+        onCancel={() => {
+          setModalVisible(false)
+        }}
+        okText={$t('common.confirm')}
+        cancelText={$t('common.cancel')}
+        okButtonProps={{
+          danger: true,
+          loading: btnLoading2,
+          disabled: !rejectedReason,
+        }}
+        centered
+        className="user-delete-modal"
+      >
+        <div className="py-4">
+          <p className="text-lg mb-4">{$t('system.reload')}</p>
+          <p className="mb-4">{$t('system.updateContent')}</p>
+          <Input.TextArea
+            autosize={{ minRows: 1, maxRows: 3 }}
+            rows={3}
+            placeholder="..."
+            value={rejectedReason}
+            onChange={e => setRejectedReason(e.target.value)}
+            className="w-full"
+          />
+        </div>
+      </Modal>
     </div>
   )
 }

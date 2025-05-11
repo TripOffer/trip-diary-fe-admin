@@ -40,7 +40,7 @@ const SearchPage = () => {
       }),
     },
     {
-      title: $t('page.home.downloadCount'),
+      title: $t('system.errorReason'),
       dataIndex: 'tags',
       width: '150px',
       render: tags => {

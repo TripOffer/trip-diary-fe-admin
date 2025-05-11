@@ -1,6 +1,7 @@
 import BaseApi from '@/service/api/shared.ts'
 import {
   DiaryDetail,
+  DiaryReviewReq,
   ReviewListReq,
   ReviewListResData,
   SearchReq,
@@ -27,6 +28,11 @@ class DiaryApi extends BaseApi {
 
   async getDiary(id: string) {
     const res = await this.http.get<DiaryDetail>(`/diary/${id}/detail`)
+    return res.data
+  }
+
+  async reviewTweets(id: string, data: DiaryReviewReq) {
+    const res = await this.http.post(`/diary/${id}/review`, data)
     return res.data
   }
 }

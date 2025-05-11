@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useTokenStore } from '@/store/token'
-import { camelToSnake } from '@/service/request/snakeCaseHelper.ts'
 
 const http = axios.create({
   baseURL: import.meta.env.VITE_SERVICE_BASE_URL,
@@ -16,11 +15,6 @@ http.interceptors.request.use(
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`
     }
-
-    if (config.params) {
-      config.params = camelToSnake(config.params)
-    }
-
     return config
   },
   error => {
@@ -43,7 +37,6 @@ http.interceptors.response.use(
 
     if (response.data && response.data.code === 403) {
       useTokenStore.getState().clearToken()
-      useNavigate()('/auth/login', { replace: true })
       return Promise.reject(response.data)
     }
     return response.data
@@ -55,8 +48,6 @@ http.interceptors.response.use(
       (error.response.status == 403 || error.response.status == 401 || error.response.status == 400)
     ) {
       // console.error('Failed to parse response data:', error)
-      useTokenStore.getState().clearToken()
-      window.location.href = '/#/auth/login'
       return Promise.reject(error.response.data)
     }
   }

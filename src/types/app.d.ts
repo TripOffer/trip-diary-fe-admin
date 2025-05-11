@@ -68,6 +68,8 @@ declare namespace App {
           deleteHint: string
           warningDelete: string
           loadingFail: string
+          reject: string
+          approve: string
         }
         form: {
           code: FormMsg

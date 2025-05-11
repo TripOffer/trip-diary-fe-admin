@@ -26,12 +26,12 @@ const local: App.I18n.Schema['translation'] = {
   request: request,
   route,
   system: {
-    errorReason: '错误原因',
-    reload: '重新渲染页面',
-    title: 'Soybean 管理系统',
-    updateCancel: '稍后再说',
-    updateConfirm: '立即刷新',
-    updateContent: '检测到系统有新版本发布，是否立即刷新页面？',
+    errorReason: '标签',
+    reload: '警告：审核拒绝是不可逆操作，所有数据将被永久删除！请谨慎操作。',
+    title: '审核拒绝原因',
+    updateCancel: '操作成功',
+    updateConfirm: '操作失败',
+    updateContent: '请输入拒绝原因',
     updateTitle: '系统版本更新通知',
   },
 }

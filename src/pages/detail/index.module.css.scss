@@ -1,0 +1,47 @@
+$prefixCls: custom;
+
+.#{$prefixCls}-btn-gradient {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s, background-color 0.3s;
+
+  > span {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    transition: opacity 0.3s;
+    opacity: 1;
+  }
+
+  &:hover::before {
+    opacity: 0;
+  }
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
+}
+
+// 通过按钮样式
+.#{$prefixCls}-btn-approve::before {
+  background: linear-gradient(135deg, #6253e1, #04befe);
+}
+
+// 拒绝按钮样式
+.#{$prefixCls}-btn-reject::before {
+  background: linear-gradient(135deg, #f25032, #e73827); // 橙红 → 深红
+}

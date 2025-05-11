@@ -51,6 +51,8 @@ const common: App.I18n.Schema['translation']['common'] = {
   warningDelete: '警告：删除账号是不可逆操作，所有数据将被永久删除！请谨慎操作。',
   deleteHint: '请输入您的密码以确认删除账号：',
   loadingFail: '加载失败，请刷新重试',
+  reject: '拒绝',
+  approve: '通过',
 }
 
 export default common

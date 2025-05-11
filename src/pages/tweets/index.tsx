@@ -20,7 +20,7 @@ const TweetsPage = () => {
       dataIndex: 'title',
       width: '600px',
       render: (text, record) => (
-        <Link className={styles.myLink} to={`/post/${record.id}`}>
+        <Link className={styles.myLink} to={`/post/${record.id}?status=${diaryStatus}`}>
           {text}
         </Link>
       ),
