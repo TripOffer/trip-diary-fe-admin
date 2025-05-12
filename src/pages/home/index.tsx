@@ -19,7 +19,14 @@ import { $t } from '@/locales'
 const HomePage = () => {
   const { setRefetchStatus } = useRefetchStore()
   const { user, role } = useTokenStore()
-  const name = JSON.parse(user!).name
+  let name = ''
+  try {
+    name = user
+      ? JSON.parse(user).name || JSON.parse(user).username || JSON.parse(user).username || ''
+      : ''
+  } catch {
+    name = ''
+  }
   const { data, isLoading, refetch } = useQuery({
     queryKey: [ApiKeys.stats],
     queryFn: () =>
@@ -55,7 +62,7 @@ const HomePage = () => {
           pTitle: $t('page.manage.common.total.users'),
           aTitle: $t('page.manage.common.total.comments'),
           rTitle: $t('page.manage.common.total.tweets'),
-          pending: data?.user?.total ?? -1,
+          pending: data?.diary?.total ?? -1,
           approved: data?.comment?.total ?? -1,
           rejected: data?.diary?.total ?? -1,
           isLoading,
