@@ -23,7 +23,7 @@ const local: App.I18n.Schema['translation'] = {
     reload: 'Reload Page',
     themeConfig: 'Theme Configuration',
     themeSchema: 'Theme Schema',
-    unpin: 'Unpin',
+    unpin: 'Switch Language',
   },
   system: {
     errorReason: 'Tags',

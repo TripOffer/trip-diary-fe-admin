@@ -1,4 +1,4 @@
-import { Button, Layout, Menu, message, Modal, Popover } from 'antd'
+import { Button, Layout, Menu, MenuProps, message, Modal, Popover } from 'antd'
 import { useNavigate } from 'react-router'
 import useAuthStore from '@/store/auth.ts'
 import NavIcon from '@/component/icon/NavIcon.tsx'
@@ -137,7 +137,7 @@ const NavBar = ({ children }: PropsWithChildren) => {
           mode="inline"
           defaultSelectedKeys={['1']}
           onClick={handleClick}
-          items={menuItems}
+          items={menuItems as MenuProps['items']}
         />
       </Sider>
       <Layout className="flex-1 flex flex-col">

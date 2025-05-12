@@ -45,7 +45,10 @@ http.interceptors.response.use(
     console.error('Failed to parse response data:', error)
     if (
       error.response &&
-      (error.response.status == 403 || error.response.status == 401 || error.response.status == 400)
+      (error.response.status == 403 ||
+        error.response.status == 401 ||
+        error.response.status == 400 ||
+        error.response.status == 404)
     ) {
       // console.error('Failed to parse response data:', error)
       return Promise.reject(error.response.data)

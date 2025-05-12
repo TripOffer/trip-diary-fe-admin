@@ -13,7 +13,7 @@ interface Props {
 const LangSwitch: FC<Props> = memo(({ className, showTooltip = true }) => {
   const { t } = useTranslation()
   const { locale, localeOptions, setLocale } = useLang()
-  const tooltipContent = showTooltip ? t('icon.lang') : ''
+  const tooltipContent = showTooltip ? t('icon.unpin') : ''
   function changeLocale({ key }: { key: string }) {
     setLocale(key as App.I18n.LangType)
     location.reload()

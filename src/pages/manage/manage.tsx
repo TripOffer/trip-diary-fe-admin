@@ -1,18 +1,47 @@
 import { $t } from '@/locales'
-import { Avatar, Divider, Table, Tag, Tooltip } from 'antd'
+import { Avatar, Divider, Dropdown, MenuProps, message, Space, Table, Tag, Tooltip } from 'antd'
 import { useEffect, useState } from 'react'
-import { UserBasicInfo } from '@/service/api/manage/types.ts'
+import { ChangeRoleReq, UserBasicInfo } from '@/service/api/manage/types.ts'
 import Api from '@/service/api'
-import useAuthStore from '@/store/auth.ts'
+import { useTokenStore } from '@/store/token.ts'
+import { DownOutlined } from '@ant-design/icons'
 
 const PAGE_SIZE = 5
 const ManagePage = () => {
-  const state = useAuthStore.getState()
-  const [myId, myRole] = [state.userId, state.role]
   const [data, setData] = useState<UserBasicInfo[]>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [total, setTotal] = useState<number>(0)
   const [page, setPage] = useState<number>(1)
+  const [changeId, setChangeId] = useState<number>(0)
+  const { role } = useTokenStore()
+  const myRole = role
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      label: (
+        <span>
+          <Tag color="green">User</Tag>
+        </span>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <span>
+          <Tag color="purple">Reviewer</Tag>
+        </span>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+        <span>
+          <Tag color="red">Admin</Tag>
+        </span>
+      ),
+      disabled: myRole !== 'Super',
+    },
+  ]
   const columns = [
     {
       title: 'ID',
@@ -61,13 +90,25 @@ const ManagePage = () => {
           minWidth: '100px',
         },
       }),
-      render: role => {
+      render: (role, record) => {
         switch (role) {
           case 'Admin':
             if (myRole === 'Super') {
               return (
                 <Tooltip title={$t('icon.pin')}>
-                  <Tag color="red">{role}</Tag>
+                  <Dropdown
+                    menu={{
+                      items,
+                      onClick: ({ key }: { key: string }) => handleClick(key, record.id),
+                    }}
+                  >
+                    <Tag color="red">
+                      <Space>
+                        {role}
+                        <DownOutlined />
+                      </Space>
+                    </Tag>
+                  </Dropdown>
                 </Tooltip>
               )
             } else {
@@ -75,8 +116,20 @@ const ManagePage = () => {
             }
           case 'User':
             return (
-              <Tooltip title={$t('icon.pin')}>
-                <Tag color="green">{role}</Tag>
+              <Tooltip title={$t('icon.pin')} trigger="hover">
+                <Dropdown
+                  menu={{
+                    items,
+                    onClick: ({ key }: { key: string }) => handleClick(key, record.id),
+                  }}
+                >
+                  <Tag color="green">
+                    <Space>
+                      {role}
+                      <DownOutlined />
+                    </Space>
+                  </Tag>
+                </Dropdown>
               </Tooltip>
             )
           case 'Super':
@@ -85,7 +138,19 @@ const ManagePage = () => {
             if (myRole === 'Admin' || myRole === 'Super') {
               return (
                 <Tooltip title={$t('icon.pin')}>
-                  <Tag color="purple">{role}</Tag>
+                  <Dropdown
+                    menu={{
+                      items,
+                      onClick: ({ key }: { key: string }) => handleClick(key, record.id),
+                    }}
+                  >
+                    <Tag color="purple">
+                      <Space>
+                        {role}
+                        <DownOutlined />
+                      </Space>
+                    </Tag>
+                  </Dropdown>
                 </Tooltip>
               )
             } else {
@@ -127,6 +192,32 @@ const ManagePage = () => {
     },
   ]
 
+  const handleClick = async (key: string, id: number) => {
+    let role = ''
+    switch (key) {
+      case '1':
+        role = 'User'
+        break
+      case '2':
+        role = 'Reviewer'
+        break
+      case '3':
+        role = 'Admin'
+        break
+    }
+    try {
+      await Api.manageApi.changeRole(String(id), {
+        role,
+      } as ChangeRoleReq)
+      message.success($t('common.modifySuccess'))
+    } catch (error) {
+      message.error($t('common.errorHint'))
+      console.error('Error fetching data:', error)
+    } finally {
+      setChangeId(changeId + 1)
+    }
+  }
+
   const fetchData = async (page: number) => {
     setLoading(true)
     try {
@@ -145,7 +236,7 @@ const ManagePage = () => {
 
   useEffect(() => {
     fetchData(page)
-  }, [page])
+  }, [page, changeId])
 
   const handleChange = pagination => {
     setPage(pagination.current)
@@ -156,7 +247,7 @@ const ManagePage = () => {
       <h1 className="font-bold underline decoration-yellow-500">{$t('page.home.visitCount')}</h1>
       <Divider />
       <Table
-        rowkey={record => record.id}
+        rowKey="id"
         loading={loading}
         dataSource={data}
         columns={columns}

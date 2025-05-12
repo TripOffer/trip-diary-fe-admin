@@ -18,8 +18,7 @@ class ManageApi extends BaseApi {
   }
 
   async changeRole(id: string, data: ChangeRoleReq) {
-    const res = await this.http.put<ChangeRoleResData>(`/user/profile/${id}/role`, data)
-    return res.data
+    const res = await this.http.put<ChangeRoleResData>(`/user/${id}/role`, data)
   }
 }
 

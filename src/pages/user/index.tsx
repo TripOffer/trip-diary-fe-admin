@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react'
 import useAuthStore from '@/store/auth.ts'
 import { useNavigate } from 'react-router-dom'
 import Api from '@/service/api'
-import { UserInfoData } from '@/service/api/user/types.ts'
 import { $t } from '@/locales'
-import { DeleteOutlined, EditOutlined, SaveOutlined, UserOutlined } from '@ant-design/icons'
+import { EditOutlined, SaveOutlined, UserOutlined } from '@ant-design/icons'
 
 const UserPage = () => {
   const [form] = Form.useForm()
