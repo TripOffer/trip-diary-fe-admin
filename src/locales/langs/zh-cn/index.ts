@@ -19,7 +19,7 @@ const local: App.I18n.Schema['translation'] = {
     pin: '点击更改权限',
     reload: '刷新页面',
     themeConfig: '主题配置',
-    themeSchema: '主题模式',
+    themeSchema: '数据总览',
     unpin: '切换语言',
   },
   page,

@@ -21,24 +21,30 @@ const Status = (props: StatusType) => {
   return (
     <UserInfoStatusContext.Provider value={props.isLoading}>
       <div className="w-full row-center flex-row gap-5 py-2">
-        <StatusCard
-          icon={props.pIcon}
-          title={props.pTitle}
-          num={props.pending}
-          gradient="from-blue-50 to-blue-100"
-        />
-        <StatusCard
-          icon={props.aIcon}
-          title={props.aTitle}
-          num={props.approved}
-          gradient="from-green-50 to-green-100"
-        />
-        <StatusCard
-          icon={props.rIcon}
-          title={props.rTitle}
-          num={props.rejected}
-          gradient="from-purple-50 to-purple-100"
-        />
+        {props.pending >= 0 && (
+          <StatusCard
+            icon={props.pIcon}
+            title={props.pTitle}
+            num={props.pending}
+            gradient="from-blue-50 to-blue-100"
+          />
+        )}
+        {props.approved >= 0 && (
+          <StatusCard
+            icon={props.aIcon}
+            title={props.aTitle}
+            num={props.approved}
+            gradient="from-green-50 to-green-100"
+          />
+        )}
+        {props.rejected >= 0 && (
+          <StatusCard
+            icon={props.rIcon}
+            title={props.rTitle}
+            num={props.rejected}
+            gradient="from-red-50 to-red-100"
+          />
+        )}
       </div>
     </UserInfoStatusContext.Provider>
   )

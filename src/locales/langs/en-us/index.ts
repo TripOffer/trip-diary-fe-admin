@@ -22,7 +22,7 @@ const local: App.I18n.Schema['translation'] = {
     pin: 'Click to change the permission',
     reload: 'Reload Page',
     themeConfig: 'Theme Configuration',
-    themeSchema: 'Theme Schema',
+    themeSchema: 'Statistics Overview',
     unpin: 'Switch Language',
   },
   system: {

@@ -61,11 +61,6 @@ const NavBar = ({ children }: PropsWithChildren) => {
       icon: <Icon icon="akar-icons:statistic-up" width="24" height="24" />,
       label: <span className="text-lg">{$t('page.home.projectCount')}</span>,
     },
-    {
-      key: '5',
-      icon: <Icon icon="clarity:help-info-line" width="24" height="24" />,
-      label: <span className="text-lg">{$t('page.about.title')}</span>,
-    },
   ]
 
   const handleLogout = () => {
@@ -110,6 +105,9 @@ const NavBar = ({ children }: PropsWithChildren) => {
         break
       case '3':
         navigate('/manage')
+        break
+      case '4':
+        navigate('/stats')
         break
       default:
         break

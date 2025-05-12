@@ -12,6 +12,7 @@ import TweetsPage from '@/pages/tweets'
 import SearchPage from '@/pages/search/search.tsx'
 import DiaryPage from '@/pages/detail/diary.tsx'
 import ManagePage from '@/pages/manage/manage.tsx'
+import StatsPage from '@/pages/statistic/stats.tsx'
 
 const routes: RouteObject[] = [
   {
@@ -45,6 +46,10 @@ const routes: RouteObject[] = [
       {
         path: '/manage',
         element: <ManagePage />,
+      },
+      {
+        path: '/stats',
+        element: <StatsPage />,
       },
     ],
   } as RouteObject,

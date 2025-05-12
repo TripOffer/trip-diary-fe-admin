@@ -55,9 +55,9 @@ const HomePage = () => {
           pTitle: $t('page.manage.common.total.users'),
           aTitle: $t('page.manage.common.total.comments'),
           rTitle: $t('page.manage.common.total.tweets'),
-          pending: data?.user.total,
-          approved: data?.comment.total,
-          rejected: data?.diary.total,
+          pending: data?.user?.total ?? -1,
+          approved: data?.comment?.total ?? -1,
+          rejected: data?.diary?.total ?? -1,
           isLoading,
         }}
       />

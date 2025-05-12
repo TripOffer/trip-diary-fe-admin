@@ -1,0 +1,5 @@
+.dropdown-multi-column .ant-dropdown-menu {
+  display: grid;
+  grid-template-columns: repeat(2, max-content); // 两列
+  gap: 8px 16px;
+}

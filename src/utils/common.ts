@@ -1,4 +1,6 @@
 import { $t } from '@/locales'
+import { SummaryStatsType } from '@/constants/app.ts'
+import { MenuProps } from 'antd'
 
 export function transformRecordToOption<T extends Record<string, string>>(record: T) {
   return Object.entries(record).map(([value, label]) => ({
@@ -40,4 +42,17 @@ export function getKeys(obj: Record<string, any>, parentKeys: string[] = []) {
     }
   }
   return keys
+}
+
+export function getSummaryTypes() {
+  const res: MenuProps['items'] = []
+  for (const key in SummaryStatsType) {
+    if (key) {
+      res.push({
+        key: SummaryStatsType[key],
+        label: key,
+      })
+    }
+  }
+  return res
 }
