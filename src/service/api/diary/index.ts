@@ -6,7 +6,7 @@ import {
   ReviewListResData,
   SearchReq,
   SearchResData,
-} from '@/service/api/Diary/types.ts'
+} from '@/service/api/diary/types.ts'
 
 class DiaryApi extends BaseApi {
   urls = {

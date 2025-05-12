@@ -75,7 +75,7 @@ const page: App.I18n.Schema['translation']['page'] = {
     todo: '赞',
     turnover: '浏览',
     visitCount: '用户管理',
-    weatherDesc: '今日多云转晴，20℃ - 25℃!',
+    weatherDesc: '用户管理',
     work: '评论',
   },
   login: {

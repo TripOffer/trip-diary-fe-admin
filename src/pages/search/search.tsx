@@ -3,7 +3,7 @@ import { Cascader, Divider, Dropdown, Input, MenuProps, message, Space, Table, T
 import { Icon } from '@iconify/react'
 import { $t } from '@/locales'
 import { sortBy } from '@/constants/app.ts'
-import { DiarySearch, SearchReq } from '@/service/api/Diary/types.ts'
+import { DiarySearch, SearchReq } from '@/service/api/diary/types.ts'
 import Api from '@/service/api'
 import { Link } from 'react-router'
 import styles from '@/pages/tweets/index.module.scss'
@@ -14,8 +14,7 @@ interface Option {
   children?: Option[]
 }
 
-const PAGE_SIZE = 10
-
+const PAGE_SIZE = 5
 const SearchPage = () => {
   const [data, setData] = useState<DiarySearch[]>([])
   const [loading, setLoading] = useState(false)
@@ -79,7 +78,9 @@ const SearchPage = () => {
       dataIndex: 'likeCount',
       key: 'likeCount',
       width: '80px',
-      sorter: true,
+      sorter: (a, b) => {
+        return a.likeCount - b.likeCount
+      },
       onCell: () => ({
         style: {
           minWidth: '80px',
@@ -91,7 +92,9 @@ const SearchPage = () => {
       dataIndex: 'viewCount',
       key: 'viewCount',
       width: '80px',
-      sorter: true,
+      sorter: (a, b) => {
+        return a.viewCount - b.viewCount
+      },
       onCell: () => ({
         style: {
           minWidth: '80px',
@@ -103,7 +106,9 @@ const SearchPage = () => {
       dataIndex: 'commentCount',
       key: 'commentCount',
       width: '80px',
-      sorter: true,
+      sorter: (a, b) => {
+        return a.commentCount - b.commentCount
+      },
       onCell: () => ({
         style: {
           minWidth: '80px',

@@ -1,12 +1,12 @@
 import { Link, useSearchParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import Api from '@/service/api'
-import { DiaryReview, ReviewListReq } from '@/service/api/Diary/types.ts'
+import { DiaryReview, ReviewListReq } from '@/service/api/diary/types.ts'
 import { Divider, Table, Tag } from 'antd'
 import { $t } from '@/locales'
 import styles from './index.module.scss'
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 5
 const TweetsPage = () => {
   const [data, setData] = useState<DiaryReview[]>([])
   const [searchParams] = useSearchParams()

@@ -4,18 +4,6 @@ import { camelToSnake, snakeToCamel } from '../request/snakeCaseHelper.ts'
 
 export default abstract class BaseApi {
   protected http: AxiosInstance = http
-  constructor() {
-    this.http.defaults.transformRequest = [
-      (data: Record<string, string>) => {
-        return JSON.stringify(camelToSnake(data))
-      },
-    ]
-    this.http.defaults.transformResponse = [
-      (data: Record<string, string>) => {
-        return snakeToCamel(JSON.parse(data as unknown as string))
-      },
-    ]
-  }
   abstract urls: { [key: string]: string }
   abstract tag: string
 }

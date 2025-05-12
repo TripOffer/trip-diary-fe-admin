@@ -11,6 +11,7 @@ import HomePage from '@/pages/home'
 import TweetsPage from '@/pages/tweets'
 import SearchPage from '@/pages/search/search.tsx'
 import DiaryPage from '@/pages/detail/diary.tsx'
+import ManagePage from '@/pages/manage/manage.tsx'
 
 const routes: RouteObject[] = [
   {
@@ -40,6 +41,10 @@ const routes: RouteObject[] = [
       {
         path: '/post/:id',
         element: <DiaryPage />,
+      },
+      {
+        path: '/manage',
+        element: <ManagePage />,
       },
     ],
   } as RouteObject,

@@ -10,8 +10,6 @@ import { DeleteOutlined, EditOutlined, SaveOutlined, UserOutlined } from '@ant-d
 const UserPage = () => {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
-  const [deleteModalVisible, setDeleteModalVisible] = useState(false)
-  const [deletePassword, setDeletePassword] = useState('')
   const { username, email, bio, gender, avatar, setAuth, resetAuth } = useAuthStore()
   const navigate = useNavigate()
   const options = [

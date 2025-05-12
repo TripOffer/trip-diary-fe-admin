@@ -109,6 +109,7 @@ const NavBar = ({ children }: PropsWithChildren) => {
         navigate('/tweets?status=Rejected')
         break
       case '3':
+        navigate('/manage')
         break
       default:
         break

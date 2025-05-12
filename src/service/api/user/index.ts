@@ -12,6 +12,7 @@ class UserApi extends BaseApi {
 
   async getUserInfo() {
     const res = await http.get<UserInfoData>(this.urls.userInfo)
+    console.log(res)
     return res.data
   }
 

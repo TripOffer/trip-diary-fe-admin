@@ -6,6 +6,12 @@ export enum RoleEnum {
   Super = 'Super',
 }
 
+export enum Gender {
+  Female = 'female',
+  Male = 'male',
+  Secret = 'secret',
+}
+
 export enum SummaryStatsType {
   UserRegister = 'user_register',
   UserActive = 'user_active',

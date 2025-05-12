@@ -52,7 +52,7 @@ const page: App.I18n.Schema['translation']['page'] = {
     },
   },
   home: {
-    creativity: 'Diary List',
+    creativity: 'diary List',
     dealCount: 'Title',
     downloadCount: 'Status',
     entertainment: 'Author',
@@ -75,7 +75,7 @@ const page: App.I18n.Schema['translation']['page'] = {
     todo: 'Likes',
     turnover: 'Views',
     visitCount: 'User Management',
-    weatherDesc: 'Today is cloudy to clear, 20℃ - 25℃!',
+    weatherDesc: 'User Management',
     work: 'Comments',
   },
   login: {
