@@ -1,13 +1,14 @@
-import { Avatar, Button, Card, Carousel, message, Modal, Input } from 'antd'
+import { Avatar, Button, Card, Carousel, Input, message, Modal } from 'antd'
 import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 import { useParams, useSearchParams } from 'react-router'
 import Api from '@/service/api'
 import { DiaryDetail, DiaryReviewReq } from '@/service/api/diary/types.ts'
-import { DiaryStatus } from '@/constants/app.ts'
+import { DiaryStatus, RoleEnum } from '@/constants/app.ts'
 import '@/pages/detail/index.module.css.scss'
 import { $t } from '@/locales'
 import { useNavigate } from 'react-router-dom'
+import { useTokenStore } from '@/store/token.ts'
 
 const prefix = import.meta.env.VITE_OSS_BASE_URL
 const DiaryPage = () => {
@@ -32,6 +33,7 @@ const DiaryPage = () => {
   const [content, setContent] = useState<string>('')
   const [updateAt, setUpdateAt] = useState<string>('')
   const [tags, setTags] = useState<string[]>([])
+  const { role } = useTokenStore()
 
   const fetchData = async () => {
     setLoading(true)
@@ -99,7 +101,8 @@ const DiaryPage = () => {
     }
   }
 
-  const getRightBtnText = () => {
+  const getRightBtnText = (type = '') => {
+    if (type) return $t('common.delete')
     return $t('common.reject')
   }
 
@@ -173,45 +176,71 @@ const DiaryPage = () => {
           </div>
         </div>
       </Card>
-      <div className="flex justify-around align-center mt-3">
-        <Button
-          type="primary"
-          size="large"
-          className="custom-btn-gradient custom-btn-approve"
-          loading={btnLoading1}
-          onClick={() => handleClick(DiaryStatus.Approved)}
-        >
-          <span
-            style={{
-              width: '150px',
-              textAlign: 'center',
-              fontSize: '20px',
-              fontWeight: 'bold',
-            }}
-          >
-            {getLeftBtnText()}
-          </span>
-        </Button>
-        {diaryStatus !== DiaryStatus.Rejected && (
+      {diaryStatus && (
+        <div className="flex justify-around align-center mt-3">
           <Button
-            danger
+            type="primary"
             size="large"
-            className="custom-btn-gradient custom-btn-reject"
-            onClick={() => setModalVisible(true)}
+            className="custom-btn-gradient custom-btn-approve"
+            loading={btnLoading1}
+            onClick={() => handleClick(DiaryStatus.Approved)}
           >
             <span
               style={{
-                width: '150px',
                 textAlign: 'center',
                 fontSize: '20px',
                 fontWeight: 'bold',
               }}
             >
-              {getRightBtnText()}
+              {getLeftBtnText()}
             </span>
           </Button>
-        )}
-      </div>
+          {diaryStatus !== DiaryStatus.Rejected && (
+            <Button
+              danger
+              size="large"
+              className="custom-btn-gradient custom-btn-reject"
+              onClick={() => setModalVisible(true)}
+            >
+              <span
+                style={{
+                  textAlign: 'center',
+                  fontSize: '20px',
+                  fontWeight: 'bold',
+                }}
+              >
+                {getRightBtnText()}
+              </span>
+            </Button>
+          )}
+          {(role === RoleEnum.Admin || role === RoleEnum.Super) && (
+            <Button
+              danger
+              size="large"
+              className="custom-btn-gradient custom-btn-reject"
+              onClick={async () => {
+                try {
+                  const res = await Api.diaryApi.deleteDiary(id!)
+                  message.success($t('common.deleteSuccess'))
+                  navigate(-1)
+                } catch (error) {
+                  message.error($t('common.error'))
+                }
+              }}
+            >
+              <span
+                style={{
+                  textAlign: 'center',
+                  fontSize: '20px',
+                  fontWeight: 'bold',
+                }}
+              >
+                {getRightBtnText('delete')}
+              </span>
+            </Button>
+          )}
+        </div>
+      )}
 
       <Modal
         title={

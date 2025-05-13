@@ -32,7 +32,6 @@ const HomePage = () => {
     queryFn: () =>
       role === RoleEnum.Reviewer ? Api.statsApi.getReviewerStats() : Api.statsApi.getAdminStats(),
   })
-  console.log(data)
   useAuth()
   useEffect(() => {
     setRefetchStatus(refetch)

@@ -35,6 +35,11 @@ class DiaryApi extends BaseApi {
     const res = await this.http.post(`/diary/${id}/review`, data)
     return res.data
   }
+
+  async deleteDiary(id: string) {
+    const res = await this.http.delete(`/diary/${id}`)
+    return res.data
+  }
 }
 
 export default new DiaryApi()
