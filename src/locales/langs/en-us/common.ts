@@ -33,7 +33,7 @@ const common: App.I18n.Schema['translation']['common'] = {
   reset: 'Reset',
   search: 'Search',
   switch: 'Switch',
-  tip: 'Tip',
+  tip: 'Roll Back',
   trigger: 'Trigger',
   tryAlign: 'Try Align',
   update: 'Update',

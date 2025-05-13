@@ -67,6 +67,9 @@ const DiaryPage = () => {
     } else {
       setBtnLoading2(true)
     }
+    if (diaryStatus !== DiaryStatus.Pending && status === 'Approved') {
+      status = 'Pending'
+    }
     try {
       await Api.diaryApi.reviewTweets(id!, {
         status,
@@ -78,12 +81,26 @@ const DiaryPage = () => {
       message.error($t('system.updateConfirm'))
       console.error('Error fetching data:', error)
     } finally {
-      if (status === 'Approved') {
+      if (status === 'Approved' || status === 'Pending') {
         setBtnLoading1(false)
       } else {
         setBtnLoading2(false)
       }
     }
+  }
+
+  const getLeftBtnText = () => {
+    switch (diaryStatus) {
+      case DiaryStatus.Pending:
+        return $t('common.approve')
+      case DiaryStatus.Approved:
+      case DiaryStatus.Rejected:
+        return $t('common.tip')
+    }
+  }
+
+  const getRightBtnText = () => {
+    return $t('common.reject')
   }
 
   useEffect(() => {
@@ -156,26 +173,26 @@ const DiaryPage = () => {
           </div>
         </div>
       </Card>
-      {diaryStatus === DiaryStatus.Pending && (
-        <div className="flex justify-around align-center mt-3">
-          <Button
-            type="primary"
-            size="large"
-            className="custom-btn-gradient custom-btn-approve"
-            loading={btnLoading1}
-            onClick={() => handleClick(DiaryStatus.Approved)}
+      <div className="flex justify-around align-center mt-3">
+        <Button
+          type="primary"
+          size="large"
+          className="custom-btn-gradient custom-btn-approve"
+          loading={btnLoading1}
+          onClick={() => handleClick(DiaryStatus.Approved)}
+        >
+          <span
+            style={{
+              width: '150px',
+              textAlign: 'center',
+              fontSize: '20px',
+              fontWeight: 'bold',
+            }}
           >
-            <span
-              style={{
-                width: '150px',
-                textAlign: 'center',
-                fontSize: '20px',
-                fontWeight: 'bold',
-              }}
-            >
-              {$t('common.approve')}
-            </span>
-          </Button>
+            {getLeftBtnText()}
+          </span>
+        </Button>
+        {diaryStatus !== DiaryStatus.Rejected && (
           <Button
             danger
             size="large"
@@ -190,11 +207,11 @@ const DiaryPage = () => {
                 fontWeight: 'bold',
               }}
             >
-              {$t('common.reject')}
+              {getRightBtnText()}
             </span>
           </Button>
-        </div>
-      )}
+        )}
+      </div>
 
       <Modal
         title={

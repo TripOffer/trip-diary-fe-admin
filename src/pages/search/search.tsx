@@ -183,7 +183,7 @@ const SearchPage = () => {
         page,
         size: PAGE_SIZE,
       } as SearchReq)
-      console.log(res)
+      // console.log(res)
       setData(res.list)
       setTotal(res.total)
     } catch (error) {
