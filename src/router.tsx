@@ -13,6 +13,7 @@ import SearchPage from '@/pages/search/search.tsx'
 import DiaryPage from '@/pages/detail/diary.tsx'
 import ManagePage from '@/pages/manage/manage.tsx'
 import StatsPage from '@/pages/statistic/stats.tsx'
+import PermissionRoute from '@/component/PermissionRoute.tsx'
 
 const routes: RouteObject[] = [
   {
@@ -45,11 +46,19 @@ const routes: RouteObject[] = [
       },
       {
         path: '/manage',
-        element: <ManagePage />,
+        element: (
+          <PermissionRoute>
+            <ManagePage />
+          </PermissionRoute>
+        ),
       },
       {
         path: '/stats',
-        element: <StatsPage />,
+        element: (
+          <PermissionRoute>
+            <StatsPage />
+          </PermissionRoute>
+        ),
       },
     ],
   } as RouteObject,
