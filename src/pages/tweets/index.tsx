@@ -18,7 +18,7 @@ const TweetsPage = () => {
     {
       title: $t('page.home.dealCount'),
       dataIndex: 'title',
-      width: '600px',
+      minWidth: '500px',
       render: (text, record) => (
         <Link className={styles.myLink} to={`/post/${record.id}?status=${diaryStatus}`}>
           {text}
@@ -26,14 +26,14 @@ const TweetsPage = () => {
       ),
       onCell: () => ({
         style: {
-          minWidth: '600px',
+          minWidth: '500px',
         },
       }),
     },
     {
       title: $t('page.home.downloadCount'),
       dataIndex: 'status',
-      width: '80px',
+      minWidth: '80px',
       render: status => {
         switch (status) {
           case 'Pending':
@@ -57,7 +57,7 @@ const TweetsPage = () => {
       render: author => {
         return author.name
       },
-      width: '130px',
+      minWidth: '130px',
       onCell: () => ({
         style: {
           minWidth: '130px',
@@ -74,7 +74,7 @@ const TweetsPage = () => {
       sorter: (a, b) => {
         return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       },
-      width: '200px',
+      minWidth: '200px',
       onCell: () => ({
         style: {
           minWidth: '200px',
@@ -113,6 +113,7 @@ const TweetsPage = () => {
       <h1 className="font-bold underline decoration-sky-500">{$t('page.home.creativity')}</h1>
       <Divider />
       <Table
+        scroll={{ x: 'max-content' }}
         rowKey={record => record.id}
         loading={loading}
         dataSource={data}

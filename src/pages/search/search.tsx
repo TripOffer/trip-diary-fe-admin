@@ -26,7 +26,7 @@ const SearchPage = () => {
     {
       title: $t('page.home.dealCount'),
       dataIndex: 'title',
-      width: '250px',
+      minWidth: '250px',
       render: (text, record) => (
         <Link className={styles.myLink} to={`/post/${record.id}`}>
           {text}
@@ -41,7 +41,7 @@ const SearchPage = () => {
     {
       title: $t('system.errorReason'),
       dataIndex: 'tags',
-      width: '150px',
+      minWidth: '150px',
       render: tags => {
         return (
           <Space>
@@ -66,7 +66,7 @@ const SearchPage = () => {
       render: author => {
         return author.name
       },
-      width: '130px',
+      minWidth: '130px',
       onCell: () => ({
         style: {
           minWidth: '130px',
@@ -77,7 +77,7 @@ const SearchPage = () => {
       title: $t('page.home.todo'),
       dataIndex: 'likeCount',
       key: 'likeCount',
-      width: '80px',
+      minWidth: '80px',
       sorter: (a, b) => {
         return a.likeCount - b.likeCount
       },
@@ -91,7 +91,7 @@ const SearchPage = () => {
       title: $t('page.home.turnover'),
       dataIndex: 'viewCount',
       key: 'viewCount',
-      width: '80px',
+      minWidth: '80px',
       sorter: (a, b) => {
         return a.viewCount - b.viewCount
       },
@@ -105,7 +105,7 @@ const SearchPage = () => {
       title: $t('page.home.work'),
       dataIndex: 'commentCount',
       key: 'commentCount',
-      width: '80px',
+      minWidth: '80px',
       sorter: (a, b) => {
         return a.commentCount - b.commentCount
       },
@@ -125,7 +125,7 @@ const SearchPage = () => {
       sorter: (a, b) => {
         return new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime()
       },
-      width: '180px',
+      minWidth: '180px',
       onCell: () => ({
         style: {
           minWidth: '180px',
@@ -142,7 +142,7 @@ const SearchPage = () => {
       sorter: (a, b) => {
         return new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
       },
-      width: '180px',
+      minWidth: '180px',
       onCell: () => ({
         style: {
           minWidth: '180px',

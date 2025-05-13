@@ -81,7 +81,7 @@ const ManagePage = () => {
     {
       title: 'ID',
       dataIndex: 'id',
-      width: '50px',
+      minWidth: '50px',
       onCell: () => ({
         style: {
           minWidth: '50px',
@@ -91,7 +91,7 @@ const ManagePage = () => {
     {
       title: $t('icon.collapse'),
       dataIndex: 'name',
-      width: '300px',
+      minWidth: '300px',
       render: (text, record) => (
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
@@ -109,7 +109,7 @@ const ManagePage = () => {
     {
       title: $t('icon.expand'),
       dataIndex: 'email',
-      width: '200px',
+      minWidth: '200px',
       onCell: () => ({
         style: {
           minWidth: '200px',
@@ -119,7 +119,7 @@ const ManagePage = () => {
     {
       title: $t('icon.fullscreen'),
       dataIndex: 'role',
-      width: '100px',
+      minWidth: '100px',
       onCell: () => ({
         style: {
           minWidth: '100px',
@@ -197,7 +197,7 @@ const ManagePage = () => {
     {
       title: $t('icon.fullscreenExit'),
       dataIndex: 'gender',
-      width: '100px',
+      minWidth: '100px',
       onCell: () => ({
         style: {
           minWidth: '100px',
@@ -217,7 +217,7 @@ const ManagePage = () => {
     {
       title: $t('icon.lang'),
       dataIndex: 'createdAt',
-      width: '200px',
+      minWidth: '200px',
       render: createdAt => {
         return new Date(createdAt).toLocaleString()
       },
@@ -311,6 +311,7 @@ const ManagePage = () => {
       />
       <Divider />
       <Table
+        scroll={{ x: 'max-content' }}
         rowKey="id"
         loading={loading}
         dataSource={data}
