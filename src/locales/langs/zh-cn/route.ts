@@ -39,7 +39,7 @@ const route: App.I18n.Schema['translation']['route'] = {
   '403': '无权限',
   '404': '页面不存在',
   '500': '服务器错误',
-  document: '文档',
+  document: '默认',
   document_antd: 'Ant Design 文档',
   document_procomponents: 'ProComponents 文档',
   document_project: '项目文档',

@@ -39,7 +39,7 @@ const route: App.I18n.Schema['translation']['route'] = {
   '403': 'No Permission',
   '404': 'Page Not Found',
   '500': 'Server Error',
-  document: 'Document',
+  document: 'Default',
   document_antd: 'Ant Design  Document',
   document_procomponents: 'ProComponents Document',
   document_project: 'Project Document',

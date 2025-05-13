@@ -1,20 +1,55 @@
 import { $t } from '@/locales'
-import { Avatar, Divider, Dropdown, MenuProps, message, Space, Table, Tag, Tooltip } from 'antd'
+import {
+  Avatar,
+  Cascader,
+  Divider,
+  Dropdown,
+  Input,
+  MenuProps,
+  message,
+  Space,
+  Table,
+  Tag,
+  Tooltip,
+} from 'antd'
 import { useEffect, useState } from 'react'
 import { ChangeRoleReq, UserBasicInfo } from '@/service/api/manage/types.ts'
 import Api from '@/service/api'
 import { useTokenStore } from '@/store/token.ts'
 import { DownOutlined } from '@ant-design/icons'
+import { Icon } from '@iconify/react'
+import { RoleEnum } from '@/constants/app.ts'
 
 const PAGE_SIZE = 5
 const ManagePage = () => {
   const [data, setData] = useState<UserBasicInfo[]>([])
   const [loading, setLoading] = useState<boolean>(false)
+  const [searchLoading, setSearchLoading] = useState<boolean>(false)
   const [total, setTotal] = useState<number>(0)
   const [page, setPage] = useState<number>(1)
   const [changeId, setChangeId] = useState<number>(0)
+  const [keyword, setKeyword] = useState<string>($t('route.document'))
+  const [key, setKey] = useState<string>('')
   const { role } = useTokenStore()
   const myRole = role
+  const options = [
+    {
+      value: 'id',
+      label: 'ID',
+    },
+    {
+      value: 'name',
+      label: $t('page.manage.user.userName'),
+    },
+    {
+      value: 'email',
+      label: $t('page.manage.user.userEmail'),
+    },
+    {
+      value: 'role',
+      label: $t('page.manage.user.userRole'),
+    },
+  ]
   const items: MenuProps['items'] = [
     {
       key: '1',
@@ -170,9 +205,9 @@ const ManagePage = () => {
       }),
       render: gender => {
         switch (gender) {
-          case 'Male':
+          case 'male':
             return <Tag color="blue">{$t('page.manage.user.gender.male')}</Tag>
-          case 'Female':
+          case 'female':
             return <Tag color="pink">{$t('page.manage.user.gender.female')}</Tag>
           default:
             return <Tag color="gray">{$t('page.manage.user.gender.other')}</Tag>
@@ -218,13 +253,15 @@ const ManagePage = () => {
     }
   }
 
-  const fetchData = async (page: number) => {
+  const fetchData = async (page: number, value = '') => {
     setLoading(true)
     try {
-      const res = await Api.manageApi.getUserList({
+      const params = {
+        ...(value ? { [key]: value } : {}),
         page,
         size: PAGE_SIZE,
-      })
+      }
+      const res = await Api.manageApi.getUserList(params)
       setData(res.list)
       setTotal(res.total)
     } catch (error) {
@@ -242,9 +279,36 @@ const ManagePage = () => {
     setPage(pagination.current)
   }
 
+  const handleCascaderChange = (value: string, selectedOptions: any) => {
+    setKeyword(value)
+    setKey(selectedOptions[0].value)
+  }
+
+  const handleSearch = (value: string) => {
+    fetchData(1, value)
+  }
+
   return (
     <div className="w-[90%] m-auto flex flex-col gap-6 justify-start items-center p-10 scroll-auto">
       <h1 className="font-bold underline decoration-yellow-500">{$t('page.home.visitCount')}</h1>
+      <Input.Search
+        loading={searchLoading}
+        placeholder={$t('page.home.projectNews.desc1')}
+        allowClear
+        prefix={<Icon icon="mdi-light:magnify" width="24" height="24" />}
+        size="large"
+        addonBefore={
+          <Cascader
+            prefix={<Icon icon="stash:filter-solid" width="24" height="24" />}
+            options={options}
+            onChange={handleCascaderChange}
+            defaultValue={[keyword]}
+            style={{ width: 150 }}
+          />
+        }
+        enterButton={$t('page.home.projectNews.desc2')}
+        onSearch={handleSearch}
+      />
       <Divider />
       <Table
         rowKey="id"
