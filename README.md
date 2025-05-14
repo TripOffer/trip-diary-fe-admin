@@ -1,4 +1,5 @@
 # Trip Diary Admin
+
 > 如果您觉得 `Trip Diary Admin` 对您有所帮助，或者您喜欢我们的项目，请在 GitHub 上给我们一个 ⭐️。您的支持是我们持续改进和增加新功能的动力！感谢您的支持！
 
 ## 简介
@@ -22,17 +23,17 @@
 
 ## 分支
 
-- `main` 分支: 最新稳定版本,基于 React19 + ReactRouter V7  版本
-- `dev` 分支: 最新开发版本,基于 React19 + ReactRouter V7  版本
+- `main` 分支: 最新稳定版本,基于 React19 + ReactRouter V7 版本
+- `dev` 分支: 最新开发版本,基于 React19 + ReactRouter V7 版本
 
-有问题都是会进行修复,如果需要使用不同版本,请切换到对应分支。 
+有问题都是会进行修复,如果需要使用不同版本,请切换到对应分支。
 
 ## 版本
 
 ### React版本
 
 - **React19 版本:**
-    - [Github 仓库](https://github.com/TripOffer/trip-diary-fe-admin)
+  - [Github 仓库](https://github.com/TripOffer/trip-diary-fe-admin)
 
 ## 示例图片
 
@@ -86,16 +87,16 @@ pnpm build
 
 ## Git 提交规范
 
-本项目已内置 `commit` 命令，您可以通过执行 `pnpm commit` 来生成符合 [Conventional Commits]([conventionalcommits](https://www.conventionalcommits.org/)) 规范的提交信息。在提交PR时，请务必使用 `commit` 命令来创建提交信息，以确保信息的规范性。
+本项目已内置 `commit` 命令，您可以通过执行 `pnpm commit` 来生成符合 [Conventional Commits](<[conventionalcommits](https://www.conventionalcommits.org/)>) 规范的提交信息。在提交PR时，请务必使用 `commit` 命令来创建提交信息，以确保信息的规范性。
 
 ## 浏览器支持
 
 推荐使用最新版的 Chrome 浏览器进行开发，以获得更好的体验。
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png" alt="IE" width="24px" height="24px"  />](http://godban.github.io/browsers-support-badges/) | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/) | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/) | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/) | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/) |
-| --- | --- | --- | --- | --- |
-| not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| not support                                                                                                                                                                                                                             | last 2 versions                                                                                                                                                                               | last 2 versions                                                                                                                                                                                       | last 2 versions                                                                                                                                                                                    | last 2 versions                                                                                                                                                                                    |
 
 ## 祝福与展望
 
-非常感谢你选择 **soybean-admin-react**，愿它能在你的工作和学习中带来便利与收获。祝所有使用者在工作和生活中都能顺利进步、健康平安。欢迎大家积极参与、贡献代码，共同将 **soybean-admin-react** 打造得更加完善与强大！
+非常感谢你选择 **trip-diary-fe-admin**，愿它能在你的工作和学习中带来便利与收获。祝所有使用者在工作和生活中都能顺利进步、健康平安。欢迎大家积极参与、贡献代码，共同将 **trip-diary-fe-admin** 打造得更加完善与强大！
