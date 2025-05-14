@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, Carousel, Input, message, Modal } from 'antd'
+import { Avatar, Button, Card, Carousel, Input, message, Modal, Popover } from 'antd'
 import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 import { useParams, useSearchParams } from 'react-router'
@@ -34,6 +34,7 @@ const DiaryPage = () => {
   const [content, setContent] = useState<string>('')
   const [updateAt, setUpdateAt] = useState<string>('')
   const [tags, setTags] = useState<string[]>([])
+  const [thumbnail, setThumbnail] = useState<string>()
   const { role } = useTokenStore()
 
   const fetchData = async () => {
@@ -54,6 +55,8 @@ const DiaryPage = () => {
       setImages(images)
       const video = res.video ? `${prefix}${res.video}` : ''
       setVideo(video)
+      const thumbnail = res.thumbnail ? `${prefix}${res.thumbnail}` : ''
+      setThumbnail(thumbnail)
 
       setLikeCount(res.likeCount)
       setCommentCount(res.commentCount)
@@ -132,7 +135,24 @@ const DiaryPage = () => {
         </div>
 
         <div>
-          <Carousel arrows infinite={false}>
+          <Carousel arrows infinite={false} autoplay adaptiveHeight dots>
+            <Popover
+              content={
+                (
+                  <span className="font-bold underline decoration-sky-600 ">
+                    {$t('route.document_antd')}
+                  </span>
+                ) as React.ReactNode
+              }
+              trigger="hover"
+              placement="top"
+            >
+              <img
+                src={thumbnail!}
+                alt="Thumbnail"
+                className="w-full h-auto object-cover rounded"
+              />
+            </Popover>
             {images.map(
               (image, index) =>
                 (
@@ -140,7 +160,7 @@ const DiaryPage = () => {
                     <img
                       src={image}
                       alt={`Slide ${index}`}
-                      className="w-full h-64 object-cover rounded"
+                      className="w-full h-auto object-cover rounded"
                     />
                   </div>
                 ) as React.ReactNode

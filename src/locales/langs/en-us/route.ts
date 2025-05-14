@@ -40,7 +40,7 @@ const route: App.I18n.Schema['translation']['route'] = {
   '404': 'Page Not Found',
   '500': 'Server Error',
   document: 'Default',
-  document_antd: 'Ant Design  Document',
+  document_antd: 'This is the thumbnail of the tweet',
   document_procomponents: 'ProComponents Document',
   document_project: 'Project Document',
   'document_project-link': 'Project Document(External Link)',

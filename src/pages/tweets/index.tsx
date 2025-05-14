@@ -2,11 +2,12 @@ import { Link, useSearchParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import Api from '@/service/api'
 import { DiaryReview, ReviewListReq } from '@/service/api/diary/types.ts'
-import { Divider, Table, Tag } from 'antd'
+import { Divider, Popover, Table, Tag } from 'antd'
 import { $t } from '@/locales'
 import styles from './index.module.scss'
 
 const PAGE_SIZE = 5
+const prefix = import.meta.env.VITE_OSS_BASE_URL
 const TweetsPage = () => {
   const [data, setData] = useState<DiaryReview[]>([])
   const [searchParams] = useSearchParams()
@@ -91,6 +92,7 @@ const TweetsPage = () => {
         page,
         size: PAGE_SIZE,
       } as ReviewListReq)
+      console.log(res)
       setData(res.list)
       setTotal(res.total)
     } catch (error) {
