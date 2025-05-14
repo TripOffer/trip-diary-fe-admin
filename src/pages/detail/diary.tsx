@@ -22,6 +22,7 @@ const DiaryPage = () => {
   const [rejectedReason, setRejectedReason] = useState('')
   const diaryStatus = searchParams.get('status') as DiaryStatus
   const [images, setImages] = useState<string[]>([])
+  const [video, setVideo] = useState<string>('')
   const [avatar, setAvatar] = useState<string>()
   const [author, setAuthor] = useState<string>()
   const [likeCount, setLikeCount] = useState<number>(0)
@@ -39,7 +40,7 @@ const DiaryPage = () => {
     setLoading(true)
     try {
       const res = (await Api.diaryApi.getDiary(id!)) as DiaryDetail
-      console.log(res)
+      // console.log(res)
       setImages(res.images.map(image => `${prefix}${image}`))
 
       setAuthor(res.author.name)
@@ -51,6 +52,8 @@ const DiaryPage = () => {
       setTags(tagList)
       const images = res.images.map(image => `${prefix}${image}`)
       setImages(images)
+      const video = res.video ? `${prefix}${res.video}` : ''
+      setVideo(video)
 
       setLikeCount(res.likeCount)
       setCommentCount(res.commentCount)
@@ -142,6 +145,12 @@ const DiaryPage = () => {
                   </div>
                 ) as React.ReactNode
             )}
+            {video &&
+              ((
+                <div key={images.length}>
+                  <video src={video} controls className="w-full h-64 object-cover rounded" />
+                </div>
+              ) as React.ReactNode)}
           </Carousel>
           <h2 className="mt-3 font-semibold text-lg">{title}</h2>
           <p className="text-grap-600 text-sm mt-1">{content}</p>
